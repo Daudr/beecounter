@@ -9,8 +9,12 @@ import { LoginComponent } from './components/login/login.component';
 import { TableComponent } from './components/table/table.component';
 import { GraphComponent } from './components/graph/graph.component';
 
+import { DatabaseService } from './services/database.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+
 const routes: Routes = [
-  { path: '', component: AppComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'table', component: TableComponent },
   { path: 'graph', component: GraphComponent }
@@ -21,7 +25,9 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     TableComponent,
-    GraphComponent
+    GraphComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +35,9 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    DatabaseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
