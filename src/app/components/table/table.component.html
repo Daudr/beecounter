@@ -1,3 +1,53 @@
-<p>
-  table works!
-</p>
+<div class="main">
+  <button (click)="query()">QUERY</button>
+  <div class="table-responsive" *ngIf="results; else loading">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <td>Data</td>
+          <td>Arnia</td>
+          <td>Sensore</td>
+          <td>Entrate</td>
+          <td>Uscite</td>
+          <td>Delta</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of results; let i=index">
+          <td>{{ result.data | date:'d/M/y' }} </td>
+          <td>{{result.id_box}}</td>
+          <td>{{result.id_sens}}</td>
+          <td>{{result.in}}</td>
+          <td>{{result.out}}</td>
+          <td>{{result.in - result.out}}</td>
+        </tr>
+        <!--<tr>
+          <td>28/04/2017</td>
+          <td>1</td>
+          <td>2</td>
+          <td>100</td>
+          <td>150</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>28/04/2017</td>
+          <td>1</td>
+          <td>2</td>
+          <td>100</td>
+          <td>150</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>28/04/2017</td>
+          <td>1</td>
+          <td>2</td>
+          <td>100</td>
+          <td>150</td>
+          <td>50</td>
+        </tr> -->
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #loading>loading</ng-template>
+</div>

@@ -10,16 +10,17 @@ var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 app.use(cors());
 
+var connection;
+
 app.post("/api/connect", (req, res, next) => {
   const user = req.body.username;
   const password = req.body.password;
 
-  // var connection = mysql.createConnection('mysql://g1tqrf3wrwguf8ph:mheesbahhhj39dsq@jfrpocyduwfg38kq.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/lcsryjrbsb5pz4m9');
-  var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : user,
-    password : password,
-    database : 'iot'
+  connection = mysql.createConnection({
+    host     : 'localhost', // RDS_HOST
+    user     : user,        // RDS_USER
+    password : password,    // RDS_PASSWORD
+    database : 'iot'        //RDS_DB
   });
 
   connection.connect(() => {
@@ -37,6 +38,36 @@ app.post("/api/connect", (req, res, next) => {
     }
   });
 */
+
+app.post("/api/query", (req, res, next) => {
+  query = req.body.query;
+  console.log('query');
+  if (connection) {
+    connection.query(query, function (error, results, fields) {
+      if (error) throw error;
+      for(i=0;i<10;i++){
+        console.log('The solution is: ', results[i].id_dev, results[i].id_box);
+      }
+      res.json(results);
+    });
+  } else {
+    connection = mysql.createConnection({
+      host     : 'localhost',
+      user     : 'root',
+      password : '',
+      database : 'iot'
+    });
+
+    connection.connect(() => {
+      // res.json({success: true});
+    });
+
+    connection.query(query, function (error, results, fields) {
+      if (error) throw error;
+      res.json(results);
+    });
+  }
+});
 
 app.post("/api/close", (req, res) => {
   connection.end(() => {

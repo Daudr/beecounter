@@ -22,9 +22,10 @@ export class LoginComponent implements OnInit {
     this.db.connect('', '').subscribe(data => {
       if(data.success) {
         this.router.navigate(['table']);
+        localStorage.setItem(data.connection, '2017-12-31');
       } else {
         console.log('wrong user/password');
-      }        
+      }
     });
   }
 }
