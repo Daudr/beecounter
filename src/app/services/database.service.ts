@@ -11,18 +11,18 @@ export class DatabaseService {
   connect (user, password) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:8080/api/connect', user, {headers: headers}).map(res => res.json());
+    return this.http.post('api/connect', user, {headers: headers}).map(res => res.json());
   }
 
   query (query): Promise<any[]> {
-    return this.http.post('http://localhost:8080/api/query', query)
+    return this.http.post('api/query', query)
     .toPromise()
     .then(response => response.json() as any[])
     .catch(this.handleError);
   }
 
   close () {
-    return this.http.post('http://localhost:8080/api/close', this).map(res => res.json());
+    return this.http.post('api/close', this).map(res => res.json());
   }
 
   private handleError(error: any) {
