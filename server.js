@@ -31,13 +31,29 @@ app.use(cors());
 app.post("/api/query", (req, res, next) => {
   query = req.body.query;
 
-  var connection = mysql.createConnection({
+  var pool  = mysql.createPool({
+    connectionLimit : 10,
+    acquireTimeout: 30000, //30s
     host     : process.env.RDS_HOST || 'localhost',
     ssl  : "Amazon RDS",
     /*user     : process.env.RDS_USER || 'root',
     password : process.env.RDS_PASSWORD || '',*/
     database : process.env.RDS_DB /*|| 'iot'*/
-  }, (err) => {
+  });
+
+  pool.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` from beecounter GROUP BY `data`, id_box, id_sens", function (error, results, fields) {
+    if (error) throw error;
+    console.log('metodo query');
+    res.json(results);
+  });
+
+  /*var connection = mysql.createConnection({
+    host     : process.env.RDS_HOST || 'localhost',
+    ssl  : "Amazon RDS",
+    /*user     : process.env.RDS_USER || 'root',
+    password : process.env.RDS_PASSWORD || '',*/
+  /*  database : process.env.RDS_DB /*|| 'iot'*/
+/*  }, (err) => {
     if (err) throw err;
   });
 
@@ -48,7 +64,7 @@ app.post("/api/query", (req, res, next) => {
     res.json(results);
   });
 
-  connection.end();
+  connection.end();*/
 });
 
 /*app.post("/api/close", (req, res) => {
