@@ -39,7 +39,7 @@ app.post("/api/query", (req, res, next) => {
     database : process.env.RDS_DB /*|| 'iot'*/
   }, (err) => {
     if (err) throw err;
-  };
+  });
 
   console.log(query);
   connection.query(query, function (error, results, fields) {
