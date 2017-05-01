@@ -52,10 +52,10 @@ app.post("/api/query", (req, res, next) => {
     });
   } else {
     connection = mysql.createConnection({
-      host     : 'localhost',
-      user     : 'root',
-      password : '',
-      database : 'iot'
+      host     : process.env.RDS_HOST || 'localhost',
+      user     : process.env.RDS_USER || 'root',
+      password : process.env.RDS_PASSWORD || '',
+      database : process.env.RDS_DB || 'iot'
     });
 
     connection.connect(() => {

@@ -13,7 +13,16 @@ export class TableComponent implements OnInit {
     private db: DatabaseService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.db
+			.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` from beecounter GROUP BY `data`, id_box, id_sens")
+			.then((results: any[]) => {
+				this.results = results.map((results) => {
+					return results;
+				});
+        console.log(this.results);
+			});
+  }
 
   query () {
     this.db
