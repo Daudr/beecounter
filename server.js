@@ -12,7 +12,7 @@ app.use(cors());
 
 var connection;
 
-app.post("/api/connect", (req, res, next) => {
+/*app.post("/api/connect", (req, res, next) => {
   const user = req.body.username;
   const password = req.body.password;
 
@@ -27,7 +27,7 @@ app.post("/api/connect", (req, res, next) => {
     res.json({success: true});
   });
   console.log('connected to MySQL DB');
-});
+});*/
 
 app.post("/api/query", (req, res, next) => {
   query = req.body.query;
@@ -49,12 +49,12 @@ app.post("/api/query", (req, res, next) => {
   connection.end();
 });
 
-app.post("/api/close", (req, res) => {
+/*app.post("/api/close", (req, res) => {
   connection.end(() => {
     res.send({closed: true});
   });
   console.log('connection ended');
-})
+})*/
 
 app.get('*', function(req, res, next){
 	res.sendFile(distDir + '/index.html');
