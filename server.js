@@ -34,7 +34,7 @@ app.post("/api/query", (req, res, next) => {
   var connection = mysql.createConnection({
     host     : process.env.RDS_HOST || 'localhost',
     ssl  : {
-      ca : fs.readFileSync(__dirname + '/rds-ca-2015-root.pem')
+      ca : fs.readFileSync(__dirname + 'rds-ca-2015-root.pem')
     },
     /*user     : process.env.RDS_USER || 'root',
     password : process.env.RDS_PASSWORD || '',*/
