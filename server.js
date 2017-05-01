@@ -17,10 +17,10 @@ app.post("/api/connect", (req, res, next) => {
   const password = req.body.password;
 
   connection = mysql.createConnection({
-    host     : 'localhost', // RDS_HOST
-    user     : user,        // RDS_USER
-    password : password,    // RDS_PASSWORD
-    database : 'iot'        //RDS_DB
+    host     : process.env.RDS_HOST || 'localhost',
+    user     : process.env.RDS_USER || 'root',
+    password : process.env.RDS_PASSWORD || '',
+    database : process.env.RDS_DB || 'iot'
   });
 
   connection.connect(() => {
@@ -29,28 +29,10 @@ app.post("/api/connect", (req, res, next) => {
   console.log('connected to MySQL DB');
 });
 
-
-/*
-  connection.query('SELECT * from beecounter', function (error, results, fields) {
-    if (error) throw error;
-    for(i=0;i<10;i++){
-      console.log('The solution is: ', results[i].id_dev, results[i].id_box);
-    }
-  });
-*/
-
 app.post("/api/query", (req, res, next) => {
   query = req.body.query;
-  console.log('query');
-  if (connection) {
-    connection.query(query, function (error, results, fields) {
-      if (error) throw error;
-      for(i=0;i<10;i++){
-        console.log('The solution is: ', results[i].id_dev, results[i].id_box);
-      }
-      res.json(results);
-    });
-  } else {
+  console.log('host: ' + process.env.RDS_HOST + '\nuser: ' + process.env.RDS_USER + '\npassword: ' + process.env.RDS_PASSWORD);
+  if (!connection) {
     connection = mysql.createConnection({
       host     : process.env.RDS_HOST || 'localhost',
       user     : process.env.RDS_USER || 'root',
@@ -58,14 +40,14 @@ app.post("/api/query", (req, res, next) => {
       database : process.env.RDS_DB || 'iot'
     });
 
-    connection.connect(() => {
-      // res.json({success: true});
-    });
+    connection.connect();
 
     connection.query(query, function (error, results, fields) {
       if (error) throw error;
       res.json(results);
     });
+
+    connection.end();
   }
 });
 
