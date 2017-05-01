@@ -39,14 +39,22 @@ app.post("/api/query", (req, res, next) => {
     database : process.env.RDS_DB || 'iot'
   });
 
+  console.log('connessione creata');
+
   connection.connect();
+
+  console.log('connesso');
 
   connection.query(query, function (error, results, fields) {
     if (error) throw error;
     res.json(results);
   });
 
+  console.log('query');
+
   connection.end();
+
+  console.log('connessione chiusa');
 });
 
 /*app.post("/api/close", (req, res) => {
