@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 const mysql = require("mysql");
 const cors = require("cors");
+const fs = require("fs");
 
 var app = express();
 app.use(bodyParser.json());
