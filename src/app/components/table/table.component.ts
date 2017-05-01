@@ -9,6 +9,7 @@ import { DatabaseService } from '../../services/database.service';
 })
 export class TableComponent implements OnInit {
   results: any[];
+  
   constructor(
     private db: DatabaseService
   ) { }

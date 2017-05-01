@@ -31,24 +31,22 @@ app.post("/api/connect", (req, res, next) => {
 
 app.post("/api/query", (req, res, next) => {
   query = req.body.query;
-  console.log('host: ' + process.env.RDS_HOST + '\nuser: ' + process.env.RDS_USER + '\npassword: ' + process.env.RDS_PASSWORD);
-  if (!connection) {
-    connection = mysql.createConnection({
-      host     : process.env.RDS_HOST || 'localhost',
-      user     : process.env.RDS_USER || 'root',
-      password : process.env.RDS_PASSWORD || '',
-      database : process.env.RDS_DB || 'iot'
-    });
 
-    connection.connect();
+  connection = mysql.createConnection({
+    host     : process.env.RDS_HOST || 'localhost',
+    user     : process.env.RDS_USER || 'root',
+    password : process.env.RDS_PASSWORD || '',
+    database : process.env.RDS_DB || 'iot'
+  });
 
-    connection.query(query, function (error, results, fields) {
-      if (error) throw error;
-      res.json(results);
-    });
+  connection.connect();
 
-    connection.end();
-  }
+  connection.query(query, function (error, results, fields) {
+    if (error) throw error;
+    res.json(results);
+  });
+
+  connection.end();
 });
 
 app.post("/api/close", (req, res) => {
