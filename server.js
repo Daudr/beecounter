@@ -33,7 +33,7 @@ app.post("/api/query", (req, res, next) => {
 
   var pool  = mysql.createPool({
     connectionLimit : 10,
-    acquireTimeout: 30000, //30s
+    acquireTimeout: 80000, //30s
     host     : process.env.RDS_HOST || 'localhost',
     ssl  : "Amazon RDS",
     /*user     : process.env.RDS_USER || 'root',
