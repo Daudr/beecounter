@@ -10,8 +10,6 @@ var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 app.use(cors());
 
-var connection;
-
 /*app.post("/api/connect", (req, res, next) => {
   const user = req.body.username;
   const password = req.body.password;
@@ -32,13 +30,14 @@ var connection;
 app.post("/api/query", (req, res, next) => {
   query = req.body.query;
 
-  connection = mysql.createConnection({
+  var connection = mysql.createConnection({
     host     : process.env.RDS_HOST /*|| 'localhost'*/,
     user     : process.env.RDS_USER /*|| 'root'*/,
     password : process.env.RDS_PASSWORD /*|| ''*/,
     database : process.env.RDS_DB /*|| 'iot'*/
   });
 
+  console.log(query);
   connection.query(query, function (error, results, fields) {
     if (error) throw error;
     console.log('metodo query');
