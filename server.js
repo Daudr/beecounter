@@ -37,7 +37,9 @@ app.post("/api/query", (req, res, next) => {
     /*user     : process.env.RDS_USER || 'root',
     password : process.env.RDS_PASSWORD || '',*/
     database : process.env.RDS_DB /*|| 'iot'*/
-  });
+  }, (err) => {
+    if (err) throw err;
+  };
 
   console.log(query);
   connection.query(query, function (error, results, fields) {
