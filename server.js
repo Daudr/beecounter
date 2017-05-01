@@ -47,12 +47,13 @@ app.post("/api/query", (req, res, next) => {
 
   connection.query(query, function (error, results, fields) {
     if (error) throw error;
+    console.log('metodo query');
     res.json(results);
   });
 
   console.log('query');
 
-  connection.end();
+  // connection.end();
 
   console.log('connessione chiusa');
 });
