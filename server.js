@@ -33,14 +33,10 @@ app.post("/api/query", (req, res, next) => {
   query = req.body.query;
 
   connection = mysql.createConnection({
-    host     : process.env.RDS_HOST || 'localhost',
-    user     : process.env.RDS_USER || 'root',
-    password : process.env.RDS_PASSWORD || '',
-    database : process.env.RDS_DB || 'iot'
-  });
-
-  connection.connect((err) => {
-    if(err) throw err;
+    host     : process.env.RDS_HOST /*|| 'localhost'*/,
+    user     : process.env.RDS_USER /*|| 'root'*/,
+    password : process.env.RDS_PASSWORD /*|| ''*/,
+    database : process.env.RDS_DB /*|| 'iot'*/
   });
 
   connection.query(query, function (error, results, fields) {
