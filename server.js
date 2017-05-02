@@ -32,7 +32,7 @@ app.post("/api/connect", (req, res, next) => {
 /*  POOL OPTIONS
 var pool  = mysql.createPool({
   connectionLimit : 10,
-  acquireTimeout: 80000, //30s
+  acquireTimeout: 80000, //80s
   host     : process.env.RDS_HOST || 'localhost',
   ssl  : "Amazon RDS",
   database : process.env.RDS_DB
@@ -50,12 +50,10 @@ app.post("/api/query", (req, res, next) => {
 
   var connection = mysql.createConnection({
     host     : process.env.RDS_HOST || 'localhost',
-    ssl  : "Amazon RDS",
+    /*ssl  : "Amazon RDS",*/
     user     : process.env.RDS_USER || 'root',
     password : process.env.RDS_PASSWORD || '',
     database : process.env.RDS_DB /*|| 'iot'*/
-  }, (err) => {
-    if (err) throw err;
   });
 
   console.log(query);
