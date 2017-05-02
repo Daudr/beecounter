@@ -1,0 +1,39 @@
+{
+  "name": "Bee Counter",
+  "short_name": "Bee Counter",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Bee Counter App",
+  "icons": [
+  {
+    "src": "/assets/icons/beehive16.png",
+    "sizes": "16x16",
+    "type": "image/png"
+  },
+  {
+    "src": "/assets/icons/beehive32.png",
+    "sizes": "32x32",
+    "type": "image/png"
+  },
+  {
+    "src": "/assets/icons/beehive64.png",
+    "sizes": "64x64",
+    "type": "image/png"
+  },
+  {
+    "src": "/assets/icons/beehive128.png",
+    "sizes": "128x128",
+    "type": "image/png"
+  },
+  {
+    "src": "/assets/icons/beehive256.png",
+    "sizes": "256x256",
+    "type": "image/png"
+  },
+  {
+    "src": "/assets/icons/beehive512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}
