@@ -15,33 +15,25 @@ export class TableComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    /*this.db
+    this.db
 			.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` from beecounter GROUP BY `data`, id_box, id_sens")
 			.then((results: any[]) => {
 				this.results = results.map((results) => {
 					return results;
 				});
         console.log(this.results);
-			});*/
-    
-    this.db.query('').subscribe(results => {
-      if(results) {
-        this.results = results;
-      } else {
-        console.log('none received');
-      }
-    });
+			});
   }
 
   query () {
-    /*this.db
+    this.db
 			.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` from beecounter GROUP BY `data`, id_box, id_sens")
 			.then((results: any[]) => {
 				this.results = results.map((results) => {
 					return results;
 				});
         console.log(this.results);
-			});*/
+			});
   }
 
 }
