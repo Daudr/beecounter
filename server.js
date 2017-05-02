@@ -48,7 +48,7 @@ pool.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`,
 */
 
 app.post("/api/query", (req, res, next) => {
-  query = req.body.query;
+  const query = req.body.query;
 
   var connection = mysql.createConnection({
     host     : process.env.RDS_HOST || 'localhost',
@@ -59,7 +59,7 @@ app.post("/api/query", (req, res, next) => {
   });
 
   console.log(query);
-  connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` from beecounter GROUP BY `data`, id_box, id_sens", function (error, results, fields) {
+  connection.query(query, function (error, results, fields) {
     if (error) throw error;
     console.log('metodo query');
     res.json(results);
