@@ -39,13 +39,13 @@ export class GraphComponent implements OnInit {
         console.log(this.results);
 
         console.log('length: ' + this.results.length);
+        this.barChartData = [];
+        this.barChartDataIn = [];
+        this.barChartDataOut = [];
         for (var i=0;i<this.results.length;i++) {
-          this.barChartData = [];
           this.barChartLabels.push(this.results[i].data);
 
-          this.barChartDataIn = [];
           this.barChartDataIn.push(this.results[i].in);
-          this.barChartDataOut = [];
           this.barChartDataOut.push(this.results[i].out);
         }
         console.log('in: ' + this.barChartDataIn);
