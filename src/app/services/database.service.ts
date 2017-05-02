@@ -15,9 +15,7 @@ export class DatabaseService {
   }
 
   query (query): Promise<any[]> {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('api/query', query, {headers: headers})
+    return this.http.post('api/query', query)
     .toPromise()
     .then(response => response.json() as any[])
     .catch(this.handleError);
