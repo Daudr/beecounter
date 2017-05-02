@@ -24,7 +24,7 @@ export class TableComponent implements OnInit {
         console.log(this.results);
 			});*/
     
-    this.db.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` from beecounter GROUP BY `data`, id_box, id_sens").subscribe(results => {
+    this.db.query('').subscribe(results => {
       if(results) {
         this.results = results;
       } else {
