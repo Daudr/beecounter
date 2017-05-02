@@ -34,18 +34,18 @@ export class GraphComponent implements OnInit {
 					return results;
 				});
         console.log(this.results);
+
+        for (var i=0;i<this.results.length;i++) {
+          this.barChartLabels.push(this.results[i].data);
+
+          this.barChartDataIn.push(this.results[i].in);
+          this.barChartDataOut.push(this.results[i].out);
+        }
+        this.barChartData = [
+          {data: this.barChartDataIn, label: 'Entrate'},
+          {data: this.barChartDataOut, label: 'Uscite'}
+        ];
 			});
-
-      for (var i=0;i<this.results.length;i++) {
-        this.barChartLabels.push(this.results[i].data);
-
-        this.barChartDataIn.push(this.results[i].in);
-        this.barChartDataOut.push(this.results[i].out);
-      }
-      this.barChartData = [
-        {data: this.barChartDataIn, label: 'Entrate'},
-        {data: this.barChartDataOut, label: 'Uscite'}
-      ]
   }
 
   // events
