@@ -3,6 +3,7 @@ var bodyParser = require("body-parser");
 const mysql = require("mysql");
 const cors = require("cors");
 const fs = require("fs");
+const timeout = require("connect-timeout");
 
 var app = express();
 app.use(bodyParser.json());
@@ -10,6 +11,7 @@ app.use(bodyParser.json());
 var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 app.use(cors());
+app.use(timeout('30s'));
 
 app.post("/api/connect", (req, res, next) => {
   const user = req.body.username;
