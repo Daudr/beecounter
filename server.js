@@ -40,7 +40,7 @@ app.post("/api/query", (req, res, next) => {
     database : process.env.RDS_DB || 'iot'
   });
 
-  console.log(req);
+  console.log(req.body);
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` from beecounter GROUP BY `data`, id_box, id_sens", function (error, results, fields) {
     if (error) throw error;
     res.json(results);
