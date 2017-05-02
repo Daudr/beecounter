@@ -22,7 +22,7 @@ export class DatabaseService {
   }
 
   graph (): Promise<any[]> {
-    return this.http.post('api/query', '')
+    return this.http.post('api/graph', '')
     .toPromise()
     .then(response => response.json() as any[])
     .catch(this.handleError);
