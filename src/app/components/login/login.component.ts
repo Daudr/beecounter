@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitLogin () {
-    this.db.connect('', '').subscribe(data => {
+    this.db.connect('ciao', 'ciao').subscribe(data => {
       if(data.success) {
         this.router.navigate(['table']);
       } else {
