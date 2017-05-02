@@ -17,6 +17,8 @@ app.post("/api/connect", (req, res, next) => {
   const user = req.body.username;
   const password = req.body.password;
 
+  console.log(req.body);
+
   connection = mysql.createConnection({
     host     : process.env.RDS_HOST || 'localhost',
     user     : process.env.RDS_USER || 'root',
