@@ -45,11 +45,11 @@ export class GraphComponent implements OnInit {
 
           this.barChartDataIn = [];
           this.barChartDataIn.push(this.results[i].in);
-          console.log(this.barChartDataIn);
           this.barChartDataOut = [];
           this.barChartDataOut.push(this.results[i].out);
-          console.log(this.barChartDataOut);
         }
+        console.log('in: ' + this.barChartDataIn);
+        console.log('out: ' + this.barChartDataOut);
         this.barChartData = [
           {data: this.barChartDataIn, label: 'Entrate'},
           {data: this.barChartDataOut, label: 'Uscite'}
