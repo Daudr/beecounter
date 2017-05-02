@@ -13,14 +13,14 @@ export class GraphComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels:string[];
+  public barChartLabels:string[] = [];
   public barChartType:string = 'bar';
   public barChartLegend:boolean = true;
 
-  public barChartDataIn: any[];
-  public barChartDataOut: any[];
+  public barChartDataIn: any[] = [];
+  public barChartDataOut: any[] = [];
 
-  public barChartData:any[];
+  public barChartData:any[] = [];
 
   constructor(
     private db: DatabaseService
