@@ -6,3 +6,7 @@ div.main {
 .progress {
   min-height: 30px;
 }
+
+.center {
+  text-align: center;
+}

@@ -1,15 +1,15 @@
 <div class="main">
 
-  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class=panel-group role=tablist>
     <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="headingOne">
-        <h4 class="panel-title">
-          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <div class=panel-heading role=tab id=collapseListGroupHeading1>
+        <h4 class="panel-title center">
+          <a href=#collapseListGroup1 class=collapsed role=button data-toggle=collapse aria-expanded=false aria-controls=collapseListGroup1>
             Opzioni
           </a>
         </h4>
       </div>
-      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="collapse panel-collapse" role=tabpanel id=collapseListGroup1 aria-labelledby=collapseListGroupHeading1>
         <div class="panel-body">
             Cerca:<br>
             <form>
@@ -49,8 +49,6 @@
     </div>
   </div>
 
-
-
   <div class="table-responsive" *ngIf="results; else loading">
     <table class="table table-bordered table-hover">
       <thead>
@@ -72,35 +70,12 @@
           <td>{{result.out}}</td>
           <td>{{result.in - result.out}}</td>
         </tr>
-        <!--<tr>
-          <td>28/04/2017</td>
-          <td>1</td>
-          <td>2</td>
-          <td>100</td>
-          <td>150</td>
-          <td>50</td>
-        </tr>
-        <tr>
-          <td>28/04/2017</td>
-          <td>1</td>
-          <td>2</td>
-          <td>100</td>
-          <td>150</td>
-          <td>50</td>
-        </tr>
-        <tr>
-          <td>28/04/2017</td>
-          <td>1</td>
-          <td>2</td>
-          <td>100</td>
-          <td>150</td>
-          <td>50</td>
-        </tr> -->
       </tbody>
     </table>
   </div>
 
   <ng-template #loading>
+    <h3 class="text-primary center">Caricamento in corso...</h3>
     <div class="progress">
       <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
         <span class="sr-only">Loading...</span>
