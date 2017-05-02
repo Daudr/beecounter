@@ -13,14 +13,17 @@ export class GraphComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels:string[] = [];
+  public barChartLabels:string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
   public barChartType:string = 'bar';
   public barChartLegend:boolean = true;
 
+  public barChartData:any[] = [
+    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
+    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
+  ];
+
   public barChartDataIn: any[] = [];
   public barChartDataOut: any[] = [];
-
-  public barChartData:any[] = [];
 
   constructor(
     private db: DatabaseService
@@ -36,9 +39,12 @@ export class GraphComponent implements OnInit {
         console.log(this.results);
 
         for (var i=0;i<this.results.length;i++) {
+          this.barChartData = [];
           this.barChartLabels.push(this.results[i].data);
 
+          this.barChartDataIn = [];
           this.barChartDataIn.push(this.results[i].in);
+          this.barChartDataOut = [];
           this.barChartDataOut.push(this.results[i].out);
         }
         this.barChartData = [
