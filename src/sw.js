@@ -17,6 +17,7 @@ self.addEventListener('install', function(event) {
         'styles.bundle.js',
         'vendor.bundle.js',
         'main.bundle.js',
+        'assets/js/sw.js',
         'assets/img/beehive.png',
       ]);
     })
