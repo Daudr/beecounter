@@ -51,6 +51,23 @@ app.post("/api/query", (req, res, next) => {
   connection.end();
 });
 
+app.post("/api/graph", (req, res, next) => {
+  var connection = mysql.createConnection({
+    host     : process.env.RDS_HOST || 'localhost',
+    user     : process.env.RDS_USER || 'root',
+    password : process.env.RDS_PASSWORD || '',
+    database : process.env.RDS_DB || 'iot'
+  });
+
+  console.log(req.body);
+  connection.query("SELECT DATE(ts_sens) AS `data`, SUM(beein) AS `in`, SUM(beeout) AS `out` from beecounter GROUP BY `data`", function (error, results, fields) {
+    if (error) throw error;
+    res.json(results);
+  });
+
+  connection.end();
+});
+
 /*app.post("/api/close", (req, res) => {
   connection.end(() => {
     res.send({closed: true});

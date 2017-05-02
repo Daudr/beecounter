@@ -21,6 +21,13 @@ export class DatabaseService {
     .catch(this.handleError);
   }
 
+  graph (): Promise<any[]> {
+    return this.http.post('api/query', '')
+    .toPromise()
+    .then(response => response.json() as any[])
+    .catch(this.handleError);
+  }
+
   close () {
     return this.http.post('api/close', this).map(res => res.json());
   }
