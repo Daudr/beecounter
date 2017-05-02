@@ -15,6 +15,7 @@ export class DatabaseService {
   }
 
   query (query): Promise<any[]> {
+    console.log(query);
     return this.http.post('api/query', query)
     .toPromise()
     .then(response => response.json() as any[])
