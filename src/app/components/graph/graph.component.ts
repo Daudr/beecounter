@@ -31,7 +31,7 @@ export class GraphComponent implements OnInit {
 
   ngOnInit() {
     this.db
-			.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` from beecounter GROUP BY `data`, id_box, id_sens")
+			.graph(/*"SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` from beecounter GROUP BY `data`, id_box, id_sens"*/)
 			.then((results: any[]) => {
 				this.results = results.map((results) => {
 					return results;
