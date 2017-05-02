@@ -38,6 +38,7 @@ export class GraphComponent implements OnInit {
 				});
         console.log(this.results);
 
+        console.log('length: ' + this.results.length);
         for (var i=0;i<this.results.length;i++) {
           this.barChartData = [];
           this.barChartLabels.push(this.results[i].data);
