@@ -59,7 +59,7 @@ app.post("/api/query", (req, res, next) => {
   });
 
   console.log(query);
-  connection.query("SELECT id_box from beecounter GROUP BY id_box", function (error, results, fields) {
+  connection.query("SELECT id_box from beecounter GROUP BY id_box LIMIT 10", function (error, results, fields) {
     if (error) throw error;
     console.log('metodo query');
     res.json(results);
