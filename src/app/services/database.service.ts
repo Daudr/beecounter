@@ -15,10 +15,12 @@ export class DatabaseService {
   }
 
   query (query): Promise<any[]> {
-    return this.http.post('api/query', query)
-    .toPromise()
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('api/query', query, {headers: headers}).map(res => res.json());
+    /*.toPromise()
     .then(response => response.json() as any[])
-    .catch(this.handleError);
+    .catch(this.handleError);*/
   }
 
   close () {
