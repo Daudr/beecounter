@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 import { DatabaseService } from '../../services/database.service';
 
@@ -41,7 +42,7 @@ export class GraphComponent implements OnInit {
         console.log('length: ' + this.results.length);
         for (var i=0;i<this.results.length;i++) {
           this.barChartData = [];
-          this.barChartLabels.push(this.results[i].data);
+          this.barChartLabels.push(new DatePipe('').transform(this.results[i].data, 'd/M/y'));
 
           this.barChartDataIn = [];
           this.barChartDataIn.push(this.results[i].in);
