@@ -14,7 +14,7 @@ export class DatabaseService {
     return this.http.post('api/connect', user, {headers: headers}).map(res => res.json());
   }
 
-  query (query): Promise<any[]> {
+  query (query)/*: Promise<any[]>*/ {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('api/query', query, {headers: headers}).map(res => res.json());
