@@ -7,6 +7,10 @@ div.main {
   min-height: 30px;
 }
 
+.progress .margin {
+  margin: 0 10%;
+}
+
 .center {
   text-align: center;
 }
