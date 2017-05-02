@@ -11,7 +11,7 @@ var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 app.use(cors());
 
-/*app.post("/api/connect", (req, res, next) => {
+app.post("/api/connect", (req, res, next) => {
   const user = req.body.username;
   const password = req.body.password;
 
@@ -26,7 +26,7 @@ app.use(cors());
     res.json({success: true});
   });
   console.log('connected to MySQL DB');
-});*/
+});
 
 app.post("/api/query", (req, res, next) => {
   query = req.body.query;
