@@ -39,7 +39,7 @@ export class GraphComponent implements OnInit {
         console.log(this.results);
 
         console.log('length: ' + this.results.length);
-        this.barChartLabels= [];
+        this.barChartLabels = [];
         this.barChartData = [];
         for (var i=0;i<this.results.length;i++) {
           this.barChartLabels.push(this.results[i].data);
@@ -47,6 +47,7 @@ export class GraphComponent implements OnInit {
           this.barChartDataIn.push(this.results[i].in);
           this.barChartDataOut.push(this.results[i].out);
         }
+        console.log('lbl: ' + this.barChartLabels);
         console.log('in: ' + this.barChartDataIn);
         console.log('out: ' + this.barChartDataOut);
         this.barChartData = [
