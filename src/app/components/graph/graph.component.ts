@@ -36,7 +36,7 @@ export class GraphComponent implements OnInit {
         var barChartDataOut = [];
 
         for (var i=0;i<this.results.length;i++) {
-          this.barChartLabels.push(new DatePipe('it-IT').transform(this.results[i].data), 'dd/MM/yyyy');
+          this.barChartLabels.push(new DatePipe('it-IT').transform(this.results[i].data, 'dd/MM/yyyy'));
 
           barChartDataIn.push(this.results[i].in);
           barChartDataOut.push(this.results[i].out);
