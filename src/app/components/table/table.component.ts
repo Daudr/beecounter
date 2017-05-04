@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 import { DatabaseService } from '../../services/database.service';
 
@@ -16,8 +17,8 @@ export class TableComponent implements OnInit, AfterViewInit {
   public arrayArnie: number[] = [];
   public arraySensore: number[] = [];
 
-  public minDate: Date;
-  public maxDate: Date;
+  public minDate: string;
+  public maxDate: string;
 
   public minArnia: number;
   public maxArnia: number;
@@ -54,8 +55,8 @@ export class TableComponent implements OnInit, AfterViewInit {
             this.arraySensore.push(this.results[i].id_sens);
         }
 
-        this.minDate = this.arrayDate[0];
-        this.maxDate = this.arrayDate[this.arrayDate.length-1];
+        this.minDate = new DatePipe('it-IT').transform(this.arrayDate[0]);
+        this.maxDate = new DatePipe('it-IT').transform(this.arrayDate[this.arrayDate.length-1]);
 
         this.minArnia = Math.min.apply(null, this.arrayArnie);
         this.maxArnia = Math.max.apply(null, this.arrayArnie);
