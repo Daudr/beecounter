@@ -14,15 +14,15 @@ export class DatabaseService {
     return this.http.post('api/connect', user, {headers: headers}).map(res => res.json());
   }
 
-  query (query: string): Promise<any[]> {
-    return this.http.post('api/query', JSON.stringify(query))
+  query (): Promise<any[]> {
+    return this.http.get('api/query')
     .toPromise()
     .then(response => response.json() as any[])
     .catch(this.handleError);
   }
 
   graph (): Promise<any[]> {
-    return this.http.post('api/graph', '')
+    return this.http.get('api/graph')
     .toPromise()
     .then(response => response.json() as any[])
     .catch(this.handleError);

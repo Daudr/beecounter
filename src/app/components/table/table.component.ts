@@ -18,7 +18,7 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.db
-			.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` from beecounter GROUP BY `data`, id_box, id_sens")
+			.query()
 			.then((results: any[]) => {
 				this.results = results.map((results) => {
 					return results;
@@ -30,10 +30,10 @@ export class TableComponent implements OnInit, AfterViewInit {
   query () {
     this.results = null;
     this.db
-			.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"+
+			.query(/*"SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"+
               "FROM beecounter" +
               "WHERE `data` BEETWEEN `2017-02-24` AND `2017-02-26`" +
-              " GROUP BY `data`, id_box, id_sens")
+              " GROUP BY `data`, id_box, id_sens"*/)
 			.then((results: any[]) => {
 				this.results = results.map((results) => {
 					return results;

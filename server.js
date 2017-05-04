@@ -32,8 +32,7 @@ app.post("/api/connect", (req, res, next) => {
   console.log('connected to MySQL DB');
 });
 
-app.post("/api/query", (req, res, next) => {
-  const query = req.body.query;
+app.get("/api/query", (req, res, next) => {
 
   var connection = mysql.createConnection({
     host     : process.env.RDS_HOST || 'localhost',
@@ -42,7 +41,6 @@ app.post("/api/query", (req, res, next) => {
     database : process.env.RDS_DB || 'iot'
   });
 
-  console.log(req.body);
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` from beecounter GROUP BY `data`, id_box, id_sens", function (error, results, fields) {
     if (error) throw error;
     res.json(results);
@@ -51,7 +49,7 @@ app.post("/api/query", (req, res, next) => {
   connection.end();
 });
 
-app.post("/api/graph", (req, res, next) => {
+app.get("/api/query/:datada/:dataa", (req, res, next) => {
   var connection = mysql.createConnection({
     host     : process.env.RDS_HOST || 'localhost',
     user     : process.env.RDS_USER || 'root',
@@ -59,7 +57,82 @@ app.post("/api/graph", (req, res, next) => {
     database : process.env.RDS_DB || 'iot'
   });
 
-  console.log(req.body);
+  connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
+                    + "FROM beecounter"
+                    + "WHERE `data` BETWEEN '" + datada + "' AND '" + dataa + "'"
+                    + " GROUP BY `data`, id_box, id_sens",  (error, results, fields) => {
+    if (error) throw error;
+    res.json(results);
+  });
+
+  connection.end();
+});
+
+app.get("/api/query/:data", (req, res, next) => {
+  var connection = mysql.createConnection({
+    host     : process.env.RDS_HOST || 'localhost',
+    user     : process.env.RDS_USER || 'root',
+    password : process.env.RDS_PASSWORD || '',
+    database : process.env.RDS_DB || 'iot'
+  });
+
+  connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
+                    + "FROM beecounter"
+                    + "WHERE `data` = '" + data + "'"
+                    + " GROUP BY `data`, id_box, id_sens",  (error, results, fields) => {
+    if (error) throw error;
+    res.json(results);
+  });
+
+  connection.end();
+});
+
+app.get("/api/query/:arnia", (req, res, next) => {
+  var connection = mysql.createConnection({
+    host     : process.env.RDS_HOST || 'localhost',
+    user     : process.env.RDS_USER || 'root',
+    password : process.env.RDS_PASSWORD || '',
+    database : process.env.RDS_DB || 'iot'
+  });
+
+  connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
+                    + "FROM beecounter"
+                    + "WHERE id_box=" + arnia
+                    + "GROUP BY `data`, id_box, id_sens",  (error, results, fields) => {
+    if (error) throw error;
+    res.json(results);
+  });
+
+  connection.end();
+});
+
+app.get("/api/query/:sensore", (req, res, next) => {
+  var connection = mysql.createConnection({
+    host     : process.env.RDS_HOST || 'localhost',
+    user     : process.env.RDS_USER || 'root',
+    password : process.env.RDS_PASSWORD || '',
+    database : process.env.RDS_DB || 'iot'
+  });
+
+  connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
+                    + "FROM beecounter"
+                    + "WHERE id_sens=" + sensore
+                    + "GROUP BY `data`, id_box, id_sens",  (error, results, fields) => {
+    if (error) throw error;
+    res.json(results);
+  });
+
+  connection.end();
+});
+
+app.get("/api/graph", (req, res, next) => {
+  var connection = mysql.createConnection({
+    host     : process.env.RDS_HOST || 'localhost',
+    user     : process.env.RDS_USER || 'root',
+    password : process.env.RDS_PASSWORD || '',
+    database : process.env.RDS_DB || 'iot'
+  });
+
   connection.query("SELECT DATE(ts_sens) AS `data`, SUM(beein) AS `in`, SUM(beeout) AS `out` from beecounter GROUP BY `data`", function (error, results, fields) {
     if (error) throw error;
     res.json(results);
