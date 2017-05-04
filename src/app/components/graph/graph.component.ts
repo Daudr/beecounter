@@ -30,6 +30,8 @@ export class GraphComponent implements OnInit {
 
   public sensore: number;
 
+  public radio;
+
   constructor(
     private db: DatabaseService
   ) { }
@@ -63,6 +65,7 @@ export class GraphComponent implements OnInit {
 
   query () {
     console.log(this.singolaData);
+    console.log(this.radio);
   }
 
 }
