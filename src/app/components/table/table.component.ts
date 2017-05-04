@@ -80,11 +80,8 @@ export class TableComponent implements OnInit, AfterViewInit {
 				});
 			});
     */
-    console.log(this.singolaData);
-    console.log(this.datada);
-    console.log(this.dataa);
-    console.log(this.arnia);
-    console.log(this.sensore);
+    console.log(this.minDate);
+    console.log(this.maxDate);
   }
 
 }
