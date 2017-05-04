@@ -23,6 +23,13 @@ export class GraphComponent implements OnInit {
 
   public singolaData: Date;
 
+  public dataa: Date;
+  public datada: Date;
+
+  public arnia: number;
+
+  public sensore: number;
+
   constructor(
     private db: DatabaseService
   ) { }
@@ -51,11 +58,6 @@ export class GraphComponent implements OnInit {
         ];
 
         this.graphLoaded = true;
-
-        console.log(this.barChartLabels);
-        console.log(barChartDataIn);
-        console.log(barChartDataOut);
-        console.log(this.results);
 			});
   }
 
