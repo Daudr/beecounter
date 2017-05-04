@@ -65,7 +65,7 @@ export class TableComponent implements OnInit, AfterViewInit {
         this.maxSensore = Math.max.apply(null, this.arraySensore);
 			});
 
-    $('.datepicker').datepicker();
+    $('.datepicker').datetimepicker();
   }
 
   query () {
