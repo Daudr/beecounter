@@ -54,8 +54,8 @@ export class TableComponent implements OnInit, AfterViewInit {
             this.arraySensore.push(this.results[i].id_sens);
         }
 
-        this.minDate = new Date(Math.min.apply(null, this.arrayDate));
-        this.maxDate = new Date(Math.max.apply(null, this.arrayDate));
+        this.minDate = this.arrayDate[0];
+        this.maxDate = this.arrayDate[this.arrayDate.length-1];
 
         this.minArnia = Math.min.apply(null, this.arrayArnie);
         this.maxArnia = Math.max.apply(null, this.arrayArnie);
