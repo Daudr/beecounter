@@ -13,7 +13,7 @@ export class GraphComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels:string[] = [];
+  public barChartLabels:any[] = [];
   public barChartType:string = 'bar';
   public barChartLegend:boolean = true;
 
@@ -35,7 +35,7 @@ export class GraphComponent implements OnInit {
         var barChartDataOut = [];
 
         for (var i=0;i<this.results.length;i++) {
-          this.barChartLabels.push(this.results[i].data);
+          this.barChartLabels.push(new Date(this.results[i].data));
 
           barChartDataIn.push(this.results[i].in);
           barChartDataOut.push(this.results[i].out);
