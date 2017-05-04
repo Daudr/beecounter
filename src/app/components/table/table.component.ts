@@ -74,7 +74,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   }
 
   query () {
-    this.results = null;
+    // this.results = null;
     if (this.radio1) {    // Singola Data
       this.db
   			.query()
