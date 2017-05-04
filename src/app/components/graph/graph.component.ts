@@ -21,6 +21,8 @@ export class GraphComponent implements OnInit {
 
   public barChartData:any[] = [];
 
+  public singolaData: Date;
+
   constructor(
     private db: DatabaseService
   ) { }
@@ -55,6 +57,10 @@ export class GraphComponent implements OnInit {
         console.log(barChartDataOut);
         console.log(this.results);
 			});
+  }
+
+  query () {
+    console.log(this.singolaData);
   }
 
 }
