@@ -20,7 +20,7 @@
                     Singola data
                   </label><br><br>
                   <label for="inputdata">Data: </label>
-                  <input type="date" id="inputdata" name="data" value="Data" min={{this.minDate}} max={{this.maxDate}} [(ngModel)]="singolaData">
+                  <input type="date" id="inputdata" class="datepicker" name="data" value="Data" min={{this.minDate}} max={{this.maxDate}} [(ngModel)]="singolaData">
                 </div>
                 <br>
                 <div class="radio">
@@ -29,9 +29,9 @@
                     Intervallo di date
                   </label><br><br>
                   <label for="datada">Da: </label>
-                  <input type="date" id="datada" name="datada" value="Data da" min={{this.minDate}} max={{this.maxDate-1}} [(ngModel)]="datada"><br><br>
+                  <input type="date" id="datada" class="datepicker" name="datada" value="Data da" min={{this.minDate}} max={{this.maxDate-1}} [(ngModel)]="datada"><br><br>
                   <label for="dataa">A: </label>
-                  <input type="date" id="dataa" name="dataa" value="A" min={{this.minDate+1}} max={{this.maxDate}} [(ngModel)]="dataa">
+                  <input type="date" id="dataa" class="datepicker" name="dataa" value="A" min={{this.minDate+1}} max={{this.maxDate}} [(ngModel)]="dataa">
                 </div>
                 <br>
                 <div class="radio">
