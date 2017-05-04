@@ -65,7 +65,7 @@ app.get("/api/query/:data", (req, res, next) => {
   connection.end();
 });
 
-app.get("/api/query/:arnia", (req, res, next) => {
+app.get("/api/arniat/:arnia", (req, res, next) => {
   var connection = mysql.createConnection({
     host     : process.env.RDS_HOST || 'localhost',
     user     : process.env.RDS_USER || 'root',
@@ -84,7 +84,7 @@ app.get("/api/query/:arnia", (req, res, next) => {
   connection.end();
 });
 
-app.get("/api/query/:sensore", (req, res, next) => {
+app.get("/api/sensoret/:sensore", (req, res, next) => {
   var connection = mysql.createConnection({
     host     : process.env.RDS_HOST || 'localhost',
     user     : process.env.RDS_USER || 'root',

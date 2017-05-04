@@ -13,6 +13,11 @@ declare var $: any;
 export class TableComponent implements OnInit, AfterViewInit {
   public results: any[];
 
+  public radio1: boolean = false;
+  public radio2: boolean = false;
+  public radio3: boolean = false;
+  public radio4: boolean = false;
+
   public arrayDate: Date[] = [];
   public arrayArnie: number[] = [];
   public arraySensore: number[] = [];
@@ -69,18 +74,22 @@ export class TableComponent implements OnInit, AfterViewInit {
   }
 
   query () {
-    /*
     this.results = null;
-    this.db
-			.query()
-			.then((results: any[]) => {
-				this.results = results.map((results) => {
-					return results;
-				});
-			});
-    */
-    console.log(this.minDate);
-    console.log(this.maxDate);
+    if (this.radio1) {    // Singola Data
+      this.db
+  			.query()
+  			.then((results: any[]) => {
+  				this.results = results.map((results) => {
+  					return results;
+  				});
+  			});
+    } else if (this.radio2) {   // Intervallo date
+
+    } else if (this.radio3) {   // Sensore
+
+    } else {                    // Arnia
+      
+    }
   }
 
 }
