@@ -1,85 +1,87 @@
 <div class="main">
 
-  <div class=panel-group role=tablist>
-    <div class="panel panel-default">
-      <div class=panel-heading role=tab id=collapseListGroupHeading1>
-        <h4 class="panel-title center">
-          <a href=#collapseListGroup1 class=collapsed role=button data-toggle=collapse aria-expanded=false aria-controls=collapseListGroup1>
-            Opzioni
-          </a>
-        </h4>
-      </div>
-      <div class="collapse panel-collapse" role=tabpanel id=collapseListGroup1 aria-labelledby=collapseListGroupHeading1>
-        <div class="panel-body">
-            Cerca:<br>
-            <form>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                  Singola data
-                </label><br><br>
-                <label for="inputdata">Data: </label>
-                <input type="date" id="inputdata" name="data" value="Data">
-              </div>
-              <br>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                  Intervallo di date
-                </label><br><br>
-                <label for="datada">Da: </label>
-                <input type="date" id="datada" name="datada" value="Data da"><br><br>
-                <label for="dataa">A: </label>
-                <input type="date" id="dataa" name="dataa" value="A">
-              </div>
-              <br>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" >
-                  Arnia
-                </label><br><br>
-                <label for="arnia">Arnia: </label>
-                <input type="number" id="arnia" name="arnia" value="Arnia" min="0" max="1">
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" >
-                  Sensore
-                </label><br><br>
-                <label for="arnia">Sensore: </label>
-                <input type="number" id="arnia" name="arnia" value="Arnia" min="0" max="4">
-              </div>
-            </form>
+  <div *ngIf="results; else loading">
+    <div class=panel-group role=tablist>
+      <div class="panel panel-default">
+        <div class=panel-heading role=tab id=collapseListGroupHeading1>
+          <h4 class="panel-title center">
+            <a href=#collapseListGroup1 class=collapsed role=button data-toggle=collapse aria-expanded=false aria-controls=collapseListGroup1>
+              Opzioni
+            </a>
+          </h4>
+        </div>
+        <div class="collapse panel-collapse" role=tabpanel id=collapseListGroup1 aria-labelledby=collapseListGroupHeading1>
+          <div class="panel-body">
+              Cerca:<br>
+              <form>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                    Singola data
+                  </label><br><br>
+                  <label for="inputdata">Data: </label>
+                  <input type="date" id="inputdata" name="data" value="Data" min={{this.minDate}} max={{this.maxDate}} [(ngModel)]="singolaData">
+                </div>
+                <br>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                    Intervallo di date
+                  </label><br><br>
+                  <label for="datada">Da: </label>
+                  <input type="date" id="datada" name="datada" value="Data da" min={{this.minDate}} max={{this.maxDate-1}} [(ngModel)]="datada"><br><br>
+                  <label for="dataa">A: </label>
+                  <input type="date" id="dataa" name="dataa" value="A" min={{this.minDate+1}} max={{this.maxDate}} [(ngModel)]="dataa">
+                </div>
+                <br>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" >
+                    Arnia
+                  </label><br><br>
+                  <label for="arnia">Arnia: </label>
+                  <input type="number" id="arnia" name="arnia" value="Arnia" min="{{this.minArnia}}" max="{{this.maxArnia}}" [(ngModel)]="arnia">
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
+                    Sensore
+                  </label><br><br>
+                  <label for="arnia">Sensore: </label>
+                  <input type="number" id="arnia" name="arnia" value="Arnia" min="{{this.minSensore}}" max="{{this.maxSensore}}" [(ngModel)]="sensore">
+                </div>
+              </form>
 
-          <button class="btn btn-primary" (click)="query()">QUERY</button>
+            <button class="btn btn-primary" (click)="query()">QUERY</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="table-responsive" *ngIf="results; else loading">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <td>Data</td>
-          <td>Arnia</td>
-          <td>Sensore</td>
-          <td>Entrate</td>
-          <td>Uscite</td>
-          <td>Delta</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let result of results; let i=index">
-          <td>{{ result.data | date:'d/M/y' }} </td>
-          <td>{{result.id_box}}</td>
-          <td>{{result.id_sens}}</td>
-          <td>{{result.in}}</td>
-          <td>{{result.out}}</td>
-          <td>{{result.in - result.out}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>Data</td>
+            <td>Arnia</td>
+            <td>Sensore</td>
+            <td>Entrate</td>
+            <td>Uscite</td>
+            <td>Delta</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let result of results; let i=index">
+            <td>{{ result.data | date:'d/M/y' }} </td>
+            <td>{{result.id_box}}</td>
+            <td>{{result.id_sens}}</td>
+            <td>{{result.in}}</td>
+            <td>{{result.out}}</td>
+            <td>{{result.in - result.out}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <ng-template #loading>

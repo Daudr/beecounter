@@ -8,7 +8,29 @@ import { DatabaseService } from '../../services/database.service';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit, AfterViewInit {
-  results: any[];
+  public results: any[];
+
+  public arrayDate: Date[];
+  public arrayArnie: number[];
+  public arraySensore: number[];
+
+  public minDate: Date;
+  public maxDate: Date;
+
+  public minArnia: number;
+  public maxArnia: number;
+
+  public minSensore: number;
+  public maxSensore: number;
+
+  public singolaData: Date;
+
+  public datada: Date;
+  public dataa: Date;
+
+  public arnia: number;
+
+  public sensore: number;
 
   constructor(
     private db: DatabaseService
@@ -23,22 +45,32 @@ export class TableComponent implements OnInit, AfterViewInit {
 				this.results = results.map((results) => {
 					return results;
 				});
-        console.log(this.results);
+
+        for (let i = 0; i < this.results.length; i++) {
+            this.arrayDate.push(this.results[i].data);
+            this.arrayArnie.push(this.results[i].id_box);
+            this.arraySensore.push(this.results[i].id_sens);
+        }
+
+        this.minDate = Math.min.apply(null, this.arrayDate);
+        this.maxDate = Math.max.apply(null, this.arrayDate);
+
+        this.minArnia = Math.min.apply(null, this.arrayArnie);
+        this.maxArnia = Math.max.apply(null, this.arrayArnie);
+
+        this.minSensore = Math.min.apply(null, this.arraySensore);
+        this.maxSensore = Math.max.apply(null, this.arraySensore);
 			});
   }
 
   query () {
     this.results = null;
     this.db
-			.query(/*"SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"+
-              "FROM beecounter" +
-              "WHERE `data` BEETWEEN `2017-02-24` AND `2017-02-26`" +
-              " GROUP BY `data`, id_box, id_sens"*/)
+			.query()
 			.then((results: any[]) => {
 				this.results = results.map((results) => {
 					return results;
 				});
-        console.log(this.results);
 			});
   }
 
