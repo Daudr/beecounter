@@ -64,6 +64,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   }
 
   query () {
+    /*
     this.results = null;
     this.db
 			.query()
@@ -72,6 +73,12 @@ export class TableComponent implements OnInit, AfterViewInit {
 					return results;
 				});
 			});
+    */
+    console.log(this.singolaData);
+    console.log(this.datada);
+    console.log(this.dataa);
+    console.log(this.arnia);
+    console.log(this.sensore);
   }
 
 }
