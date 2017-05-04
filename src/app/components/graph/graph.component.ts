@@ -13,7 +13,7 @@ export class GraphComponent implements OnInit {
   public graphLoaded:boolean = false;
   public barChartOptions:any = {
     scaleShowVerticalLines: false,
-    responsive: true
+    responsive: false
   };
   public barChartLabels:any[] = [];
   public barChartType:string = 'bar';
