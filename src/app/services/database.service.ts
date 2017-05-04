@@ -21,6 +21,34 @@ export class DatabaseService {
     .catch(this.handleError);
   }
 
+  singolaDataTabella (data: string): Promise<any[]> {
+    return this.http.get('api/query/' + data)
+    .toPromise()
+    .then(response => response.json() as any[])
+    .catch(this.handleError);
+  }
+
+  intervalloDateTabella (datada: string, dataa: string): Promise<any[]> {
+    return this.http.get('api/query/' + datada + '/' + dataa)
+    .toPromise()
+    .then(response => response.json() as any[])
+    .catch(this.handleError);
+  }
+
+  arniaTabella (arnia: number) {
+    return this.http.get('api/arniat/' + arnia)
+    .toPromise()
+    .then(response => response.json() as any[])
+    .catch(this.handleError);
+  }
+
+  sensoreTabella (sensore: number) {
+    return this.http.get('api/arniat/' + sensore)
+    .toPromise()
+    .then(response => response.json() as any[])
+    .catch(this.handleError);
+  }
+
   graph (): Promise<any[]> {
     return this.http.get('api/graph')
     .toPromise()

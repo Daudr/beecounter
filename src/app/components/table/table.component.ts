@@ -31,10 +31,10 @@ export class TableComponent implements OnInit, AfterViewInit {
   public minSensore: number;
   public maxSensore: number;
 
-  public singolaData: Date;
+  public singolaData: string;
 
-  public datada: Date;
-  public dataa: Date;
+  public datada: string;
+  public dataa: string;
 
   public arnia: number;
 
@@ -77,18 +77,36 @@ export class TableComponent implements OnInit, AfterViewInit {
     // this.results = null;
     if (this.radio1) {    // Singola Data
       this.db
-  			.query()
+  			.singolaDataTabella(this.singolaData)
   			.then((results: any[]) => {
   				this.results = results.map((results) => {
   					return results;
   				});
   			});
     } else if (this.radio2) {   // Intervallo date
-
+      this.db
+        .intervalloDateTabella(this.datada, this.dataa)
+        .then((results: any[]) => {
+          this.results = results.map((results) => {
+            return results;
+          });
+        });
     } else if (this.radio3) {   // Sensore
-
+      this.db
+        .sensoreTabella(this.sensore)
+        .then((results: any[]) => {
+          this.results = results.map((results) => {
+            return results;
+          });
+        });
     } else {                    // Arnia
-
+      this.db
+        .arniaTabella(this.arnia)
+        .then((results: any[]) => {
+          this.results = results.map((results) => {
+            return results;
+          });
+        });
     }
 
     console.log(this.radio1);
