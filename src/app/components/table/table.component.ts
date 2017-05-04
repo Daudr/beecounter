@@ -10,9 +10,9 @@ import { DatabaseService } from '../../services/database.service';
 export class TableComponent implements OnInit, AfterViewInit {
   public results: any[];
 
-  public arrayDate: Date[];
-  public arrayArnie: number[];
-  public arraySensore: number[];
+  public arrayDate: Date[] = [];
+  public arrayArnie: number[] = [];
+  public arraySensore: number[] = [];
 
   public minDate: Date;
   public maxDate: Date;
