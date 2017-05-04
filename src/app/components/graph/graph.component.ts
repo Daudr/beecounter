@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 import { DatabaseService } from '../../services/database.service';
 
@@ -35,7 +36,7 @@ export class GraphComponent implements OnInit {
         var barChartDataOut = [];
 
         for (var i=0;i<this.results.length;i++) {
-          this.barChartLabels.push(new Date(this.results[i].data));
+          this.barChartLabels.push(new DatePipe('it-IT').transform(this.results[i].data), 'dd/MM/yyyy');
 
           barChartDataIn.push(this.results[i].in);
           barChartDataOut.push(this.results[i].out);
@@ -46,7 +47,7 @@ export class GraphComponent implements OnInit {
           {data: barChartDataOut, label: 'Uscite'}
         ];
 
-        console.log(this.barChartLabels[0].getDate());
+        console.log(this.barChartLabels);
         console.log(barChartDataIn);
         console.log(barChartDataOut);
         console.log(this.results);
