@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 import { DatabaseService } from '../../services/database.service';
 
+declare var $: any;
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -61,6 +63,10 @@ export class TableComponent implements OnInit, AfterViewInit {
         this.minSensore = Math.min.apply(null, this.arraySensore);
         this.maxSensore = Math.max.apply(null, this.arraySensore);
 			});
+
+    $('#inputdata').datepicker();
+    $('#datada').datepicker();
+    $('#dataa').datepicker();
   }
 
   query () {
