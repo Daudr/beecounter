@@ -47,7 +47,7 @@ export class GraphComponent implements OnInit {
         ];
 
         console.log('lbl: ' + this.barChartLabels + '\nin: ' + this.barChartDataIn + '\nout: ' + this.barChartDataOut);
-        console.log('lbl: ' + this.results.data + '\nin: ' + this.results.in + '\nout: ' + this.results.out);
+        console.log(this.results);
 			});
   }
 
