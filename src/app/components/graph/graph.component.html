@@ -1,5 +1,5 @@
 <div class="main">
-  <div style="display: block" *ngIf="barChartDataIn; else loading">
+  <div style="display: block" *ngIf="graphLoaded; else loading">
     <canvas baseChart
             [datasets]="barChartData"
             [labels]="barChartLabels"

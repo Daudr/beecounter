@@ -10,6 +10,7 @@ import { DatabaseService } from '../../services/database.service';
 })
 export class GraphComponent implements OnInit {
   public results: any[];
+  public graphLoaded:boolean = false;
   public barChartOptions:any = {
     scaleShowVerticalLines: false,
     responsive: true
@@ -46,6 +47,8 @@ export class GraphComponent implements OnInit {
           {data: barChartDataIn, label: 'Entrate'},
           {data: barChartDataOut, label: 'Uscite'}
         ];
+
+        this.graphLoaded = true;
 
         console.log(this.barChartLabels);
         console.log(barChartDataIn);
