@@ -88,8 +88,12 @@ export class TableComponent implements OnInit, AfterViewInit {
     } else if (this.radio3) {   // Sensore
 
     } else {                    // Arnia
-      
-    }
-  }
 
+    }
+
+    console.log(this.radio1);
+    console.log(this.radio2);
+    console.log(this.radio3);
+    console.log(this.radio4);
+  }
 }
