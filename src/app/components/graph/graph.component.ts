@@ -19,9 +19,6 @@ export class GraphComponent implements OnInit {
 
   public barChartData:any[] = [];
 
-  public barChartDataIn: any[] = [];
-  public barChartDataOut: any[] = [];
-
   constructor(
     private db: DatabaseService
   ) { }
@@ -34,19 +31,22 @@ export class GraphComponent implements OnInit {
 					return results;
 				});
 
+        var barChartDataIn = [];
+        var barChartDataOut = [];
+
         for (var i=0;i<this.results.length;i++) {
           this.barChartLabels.push(this.results[i].data);
 
-          this.barChartDataIn.push(this.results[i].in);
-          this.barChartDataOut.push(this.results[i].out);
+          barChartDataIn.push(this.results[i].in);
+          barChartDataOut.push(this.results[i].out);
         }
 
         this.barChartData = [
-          {data: this.barChartDataIn, label: 'Entrate'},
-          {data: this.barChartDataOut, label: 'Uscite'}
+          {data: barChartDataIn, label: 'Entrate'},
+          {data: barChartDataOut, label: 'Uscite'}
         ];
 
-        console.log('lbl: ' + this.barChartLabels + '\nin: ' + this.barChartDataIn + '\nout: ' + this.barChartDataOut);
+        console.log('lbl: ' + this.barChartLabels + '\nin: ' + barChartDataIn + '\nout: ' + barChartDataOut);
         console.log(this.results);
 			});
   }
