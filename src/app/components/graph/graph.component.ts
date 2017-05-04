@@ -46,7 +46,9 @@ export class GraphComponent implements OnInit {
           {data: barChartDataOut, label: 'Uscite'}
         ];
 
-        console.log('lbl: ' + this.barChartLabels + '\nin: ' + barChartDataIn + '\nout: ' + barChartDataOut);
+        console.log(this.barChartLabels);
+        console.log(barChartDataIn);
+        console.log(barChartDataOut);
         console.log(this.results);
 			});
   }
