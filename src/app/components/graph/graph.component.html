@@ -19,7 +19,7 @@
                   Singola data
                 </label><br><br>
                 <label for="inputdata">Data: </label>
-                <input type="date" id="inputdata" name="data" value="Data" [(ngModel)]="singolaData">
+                <input type="date" id="inputdata" name="data" value="Data" [(ngModel)]="singolaData" [disabled]="!radio1">
               </div>
               <br>
               <div class="radio">
