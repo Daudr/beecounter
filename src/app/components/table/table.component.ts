@@ -13,7 +13,7 @@ declare var $: any;
 export class TableComponent implements OnInit, AfterViewInit {
   public results: any[];
 
-  public radio1: boolean = false;
+  public radio1: boolean = true;
   public radio2: boolean = false;
   public radio3: boolean = false;
   public radio4: boolean = false;
