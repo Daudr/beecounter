@@ -50,7 +50,7 @@ app.get("/api/query/:data", (req, res, next) => {
 
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
                     + "FROM beecounter"
-                    + "WHERE DATE(ts_sens) = ?? "
+                    + "WHERE DATE(ts_sens) = ? "
                     + "GROUP BY `data`, id_box, id_sens",
                     [req.params.data],
                     (error, results, fields) => {
@@ -66,7 +66,7 @@ app.get("/api/arniat/:arnia", (req, res, next) => {
 
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
                     + "FROM beecounter"
-                    + "WHERE id_box= ?? "
+                    + "WHERE id_box= ? "
                     + "GROUP BY `data`, id_box, id_sens",
                     [req.params.arnia],
                     (error, results, fields) => {
