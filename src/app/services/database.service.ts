@@ -8,13 +8,8 @@ export class DatabaseService {
 
   constructor(private http: Http) { }
 
-  connect (user, password) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('api/connect', user, {headers: headers}).map(res => res.json());
-  }
-
   query (): Promise<any[]> {
+    // return this.http.get('http://localhost:8080/api/query')
     return this.http.get('api/query')
     .toPromise()
     .then(response => response.json() as any[])
@@ -22,6 +17,7 @@ export class DatabaseService {
   }
 
   singolaDataTabella (data: string): Promise<any[]> {
+    // return this.http.get('http://localhost:8080/api/query/' + data)
     return this.http.get('api/query/' + data)
     .toPromise()
     .then(response => response.json() as any[])
@@ -29,6 +25,7 @@ export class DatabaseService {
   }
 
   intervalloDateTabella (datada: string, dataa: string): Promise<any[]> {
+    // return this.http.get('http://localhost:8080/api/query/' + datada + '/' + dataa)
     return this.http.get('api/query/' + datada + '/' + dataa)
     .toPromise()
     .then(response => response.json() as any[])
@@ -36,6 +33,7 @@ export class DatabaseService {
   }
 
   arniaTabella (arnia: number) {
+    // return this.http.get('http://localhost:8080/api/arniat/' + arnia)
     return this.http.get('api/arniat/' + arnia)
     .toPromise()
     .then(response => response.json() as any[])
@@ -43,21 +41,19 @@ export class DatabaseService {
   }
 
   sensoreTabella (sensore: number) {
-    return this.http.get('api/arniat/' + sensore)
+    // return this.http.get('http://localhost:8080/api/sensoret/' + sensore)
+    return this.http.get('api/sensoret/' + sensore)
     .toPromise()
     .then(response => response.json() as any[])
     .catch(this.handleError);
   }
 
   graph (): Promise<any[]> {
+    // return this.http.get('http://localhost:8080/api/graph')
     return this.http.get('api/graph')
     .toPromise()
     .then(response => response.json() as any[])
     .catch(this.handleError);
-  }
-
-  close () {
-    return this.http.post('api/close', this).map(res => res.json());
   }
 
   private handleError(error: any) {
