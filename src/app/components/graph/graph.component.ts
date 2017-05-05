@@ -36,6 +36,9 @@ export class GraphComponent implements OnInit {
     private db: DatabaseService
   ) { }
 
+  /**
+  * Permette di inviare la query appena la pagina viene aperta
+  */
   ngOnInit() {
     this.db
 			.graph()
@@ -63,9 +66,14 @@ export class GraphComponent implements OnInit {
 			});
   }
 
+  /**
+  * Permette di modificare il grafico secondo i criteri scelti
+  *
+  * !! IN SVILUPPO !!
+  */
+
   query () {
-    console.log(this.singolaData);
-    console.log(this.radio);
+
   }
 
 }

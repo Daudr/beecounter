@@ -8,6 +8,9 @@ export class DatabaseService {
 
   constructor(private http: Http) { }
 
+  // Se si lavora in locale bisogna togliere il commento dalle righe con localhost e aggiungerlo a quelle senza
+
+  
   query (): Promise<any[]> {
     // return this.http.get('http://localhost:8080/api/query')
     return this.http.get('api/query')

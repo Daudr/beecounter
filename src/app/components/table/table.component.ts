@@ -11,22 +11,23 @@ declare var $: any;
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit, AfterViewInit {
-  public results: any[];
+  public results: any[];                // array che contiene i risultati forniti dal database
 
+  public arrayDate: Date[] = [];        // array che contiene le date fornite dal database
+  public arrayArnie: number[] = [];     // array che contiente le arnie fornite dal database
+  public arraySensore: number[] = [];   // array che contiene i sensori forniti dal database
+
+  public minDate: string;               // prima data all'interno del database
+  public maxDate: string;               // ultima data all'interno del database
+
+  public minArnia: number;              // numero della prima arnia
+  public maxArnia: number;              // numero dell'ultima arnia
+
+  public minSensore: number;            // numero del primo sensore
+  public maxSensore: number;            // numero dell'ultimo sensore
+
+  // Attributi utili per le opzioni
   public radio: number = 3;
-
-  public arrayDate: Date[] = [];
-  public arrayArnie: number[] = [];
-  public arraySensore: number[] = [];
-
-  public minDate: string;
-  public maxDate: string;
-
-  public minArnia: number;
-  public maxArnia: number;
-
-  public minSensore: number;
-  public maxSensore: number;
 
   public singolaData: string;
 
@@ -43,6 +44,9 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   ngOnInit() { }
 
+  /**
+  * Permette di inviare la query appena la pagina viene aperta
+  */
   ngAfterViewInit() {
     this.db
 			.query()
@@ -69,6 +73,12 @@ export class TableComponent implements OnInit, AfterViewInit {
 
     $('.datepicker').datetimepicker();
   }
+
+  /**
+  * Permette di modificare la tabella secondo i criteri scelti
+  *
+  * !! NON FUNZIONANTE !!
+  */
 
   query () {
     // this.results = null;
@@ -106,7 +116,5 @@ export class TableComponent implements OnInit, AfterViewInit {
           });
         });
     }
-
-    console.log(this.radio);
   }
 }

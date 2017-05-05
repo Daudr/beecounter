@@ -1,61 +1,64 @@
 <div class="main">
 
   <div class=panel-group role=tablist>
-    <div class="panel panel-default">
-      <div class=panel-heading role=tab id=collapseListGroupHeading1>
-        <h4 class="panel-title center">
-          <a href=#collapseListGroup1 class=collapsed role=button data-toggle=collapse aria-expanded=false aria-controls=collapseListGroup1>
-            Opzioni
-          </a>
-        </h4>
-      </div>
-      <div class="collapse panel-collapse" role=tabpanel id=collapseListGroup1 aria-labelledby=collapseListGroupHeading1>
-        <div class="panel-body">
-            Cerca:<br>
-            <form>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="radio1" value="data" [(ngModel)]="radio" checked>
-                  Singola data
-                </label><br><br>
-                <label for="inputdata">Data: </label>
-                <input type="date" id="inputdata" name="data" value="Data" [(ngModel)]="singolaData" [disabled]="radio">
-              </div>
-              <br>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="radio2" value="intervallodate">
-                  Intervallo di date
-                </label><br><br>
-                <label for="datada">Da: </label>
-                <input type="date" id="datada" name="datada" value="Data da" [(ngModel)]="datada"><br><br>
-                <label for="dataa">A: </label>
-                <input type="date" id="dataa" name="dataa" value="A" [(ngModel)]="dataa">
-              </div>
-              <br>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="radio3" value="arnia" >
-                  Arnia
-                </label><br><br>
-                <label for="arnia">Arnia: </label>
-                <input type="number" id="arnia" name="arnia" value="Arnia" min="0" max="1" [(ngModel)]="arnia">
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="radio4" value="sensore" [(ngModel)]="sensore">
-                  Sensore
-                </label><br><br>
-                <label for="arnia">Sensore: </label>
-                <input type="number" id="arnia" name="arnia" value="Arnia" min="0" max="4">
-              </div>
-            </form>
+    <!-- Opzioni per fare tabelle in base criteri scelti dall'utente - Al momento non funzionante
+      <div class=panel-group role=tablist>
+        <div class="panel panel-default">
+          <div class=panel-heading role=tab id=collapseListGroupHeading1>
+            <a href=#collapseListGroup1 class=collapsed role=button data-toggle=collapse aria-expanded=false aria-controls=collapseListGroup1>
+              <h4 class="panel-title center">
+                Opzioni
+              </h4>
+            </a>
+          </div>
+          <div class="collapse panel-collapse" role=tabpanel id=collapseListGroup1 aria-labelledby=collapseListGroupHeading1>
+            <div class="panel-body">
+                Cerca:<br>
+                <form>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked [ngModel]="{checked: radio == 1}" (ngModelOnChange)="radio=1">
+                      Singola data
+                    </label><br><br>
+                    <label for="inputdata">Data: </label>
+                    <input type="date" id="inputdata" class="datepicker" name="data" value="Data" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 1" [(ngModel)]="singolaData">
+                  </div>
+                  <br>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" [ngModel]="{checked: radio == 2}" (ngModelOnChange)="radio=2">
+                      Intervallo di date
+                    </label><br><br>
+                    <label for="datada">Da: </label>
+                    <input type="date" id="datada" class="datepicker" name="datada" value="Data da" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="datada"><br><br>
+                    <label for="dataa">A: </label>
+                    <input type="date" id="dataa" class="datepicker" name="dataa" value="A" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="dataa">
+                  </div>
+                  <br>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" [ngModel]="{checked: radio == 3}" (ngModelOnChange)="radio=3">
+                      Arnia
+                    </label><br><br>
+                    <label for="arnia">Arnia: </label>
+                    <input type="number" id="arnia" name="arnia" value="Arnia" min="{{this.minArnia}}" max="{{this.maxArnia}}" [disabled]="radio != 3" [(ngModel)]="arnia">
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" [ngModel]="{checked: radio == 4}" (ngModelOnChange)="radio=4">
+                      Sensore
+                    </label><br><br>
+                    <label for="arnia">Sensore: </label>
+                    <input type="number" id="arnia" name="arnia" value="Arnia" min="{{this.minSensore}}" max="{{this.maxSensore}}" [disabled]="radio != 4" [(ngModel)]="sensore">
+                  </div>
+                </form>
 
-          <button class="btn btn-primary" (click)="query()">QUERY</button>
+              <button class="btn btn-primary" (click)="query()">QUERY</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+    -->
 
   <div style="display: block" *ngIf="graphLoaded==true; else loading">
     <canvas baseChart

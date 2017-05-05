@@ -11,11 +11,17 @@ app.use(express.static(distDir));
 app.use(cors());
 
 const connectionOptions = {                             // Per motivi di riservatezza le variabili di connessione al database sono segrete
-  host     : process.env.RDS_HOST || 'localhost',       // Modificare questi campi per far si che ci si connetta al giusto database
-  user     : process.env.RDS_USER || 'root',            //
+  host     : process.env.RDS_HOST || 'localhost',       // e memorizzate su Heroku
+  user     : process.env.RDS_USER || 'root',            // Modificare questi campi per far si che ci si connetta al giusto database
   password : process.env.RDS_PASSWORD || '',            //
   database : process.env.RDS_DB || 'iot'                //
 };
+
+/**
+* "api/query"
+*   GET: End Point che contiente la query per ottenere tutti i dati della tabella beecounter del database
+*        Da usare per costruire la tabella dell'app
+*/
 
 app.get("/api/query", (req, res, next) => {
 
@@ -28,6 +34,14 @@ app.get("/api/query", (req, res, next) => {
 
   connection.end();
 });
+
+/**
+* "api/query/:datada/:dataa"
+*   GET: End Point che contiente la query per ottenere i dati della tabella beecounter in un intervallo di date che va `datada` a `dataa`
+*        Da usare per costruire la tabella dell'app
+*
+*   !! NON FUNZIONANTE AL MOMENTO !!
+*/
 
 app.get("/api/query/:datada/:dataa", (req, res, next) => {
   var connection = mysql.createConnection(connectionOptions);
@@ -45,6 +59,14 @@ app.get("/api/query/:datada/:dataa", (req, res, next) => {
   connection.end();
 });
 
+/**
+* "api/query/:data"
+*   GET: End Point che contiente la query per ottenere i dati della tabella beecounter in una singola data `data`
+*        Da usare per costruire la tabella dell'app
+*
+*   !! NON FUNZIONANTE AL MOMENTO !!
+*/
+
 app.get("/api/query/:data", (req, res, next) => {
   var connection = mysql.createConnection(connectionOptions);
 
@@ -61,6 +83,14 @@ app.get("/api/query/:data", (req, res, next) => {
   connection.end();
 });
 
+/**
+* "api/arniat/:arnia"
+*   GET: End Point che contiente la query per ottenere i dati della tabella beecounter di una singola arnia `arnia`
+*        Da usare per costruire la tabella dell'app
+*
+*   !! NON FUNZIONANTE AL MOMENTO !!
+*/
+
 app.get("/api/arniat/:arnia", (req, res, next) => {
   var connection = mysql.createConnection(connectionOptions);
 
@@ -75,6 +105,14 @@ app.get("/api/arniat/:arnia", (req, res, next) => {
 
   connection.end();
 });
+
+/**
+* "api/query/:sensore"
+*   GET: End Point che contiente la query per ottenere i dati della tabella beecounter di un singolo sensore `sensore`
+*        Da usare per costruire la tabella dell'app
+*
+*   !! NON FUNZIONANTE AL MOMENTO !!
+*/
 
 app.get("/api/sensoret/:sensore", (req, res, next) => {
   var connection = mysql.createConnection(connectionOptions);
@@ -92,6 +130,12 @@ app.get("/api/sensoret/:sensore", (req, res, next) => {
   connection.end();
 });
 
+/**
+* "api/graph"
+*   GET: End Point che contiente la query per ottenere tutti i dati della tabella beecounter del database
+*        Da usare per costruire il grafico dell'app
+*/
+
 app.get("/api/graph", (req, res, next) => {
   var connection = mysql.createConnection(connectionOptions);
 
@@ -103,9 +147,18 @@ app.get("/api/graph", (req, res, next) => {
   connection.end();
 });
 
+/**
+* "*"
+*   GET: Invia l'index.html dell'app
+*/
+
 app.get('*', function(req, res, next){
 	res.sendFile(distDir + '/index.html');
 });
+
+/**
+* Metodo per far usare all'applicazione la porta dove ascoltare le richieste REST, 8080 se in ambiente di sviluppo
+*/
 
 var server = app.listen(process.env.PORT || 8080, function () {
     var port = server.address().port;
