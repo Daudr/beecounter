@@ -90,15 +90,16 @@ export class TableComponent implements OnInit, AfterViewInit {
         });
     } else if (this.radio == 3) {   // Sensore
       this.db
-        .sensoreTabella(this.sensore)
+        .arniaTabella(this.arnia)
         .then((results: any[]) => {
           this.results = results.map((results) => {
             return results;
           });
         });
+
     } else {                    // Arnia
       this.db
-        .arniaTabella(this.arnia)
+        .sensoreTabella(this.sensore)
         .then((results: any[]) => {
           this.results = results.map((results) => {
             return results;
