@@ -34,8 +34,10 @@ app.get("/api/query/:datada/:dataa", (req, res, next) => {
 
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
                     + "FROM beecounter"
-                    + "WHERE DATE(ts_sens) BETWEEN '" + req.params.datada + "' AND '" + req.params.dataa + "'"
-                    + " GROUP BY `data`, id_box, id_sens",  (error, results, fields) => {
+                    + "WHERE DATE(ts_sens) BETWEEN ?? AND ?? "
+                    + " GROUP BY `data`, id_box, id_sens",
+                    [req.params.datada, req.params.dataa],
+                    (error, results, fields) => {
     if (error) throw error;
     res.json(results);
   });
@@ -64,8 +66,10 @@ app.get("/api/arniat/:arnia", (req, res, next) => {
 
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
                     + "FROM beecounter"
-                    + "WHERE id_box=" + req.params.arnia
-                    + "GROUP BY `data`, id_box, id_sens",  (error, results, fields) => {
+                    + "WHERE id_box= ?? "
+                    + "GROUP BY `data`, id_box, id_sens",
+                    [req.params.arnia],
+                    (error, results, fields) => {
     if (error) throw error;
     res.json(results);
   });
@@ -78,8 +82,10 @@ app.get("/api/sensoret/:sensore", (req, res, next) => {
 
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
                     + "FROM beecounter"
-                    + "WHERE id_sens=" + req.params.sensore
-                    + "GROUP BY `data`, id_box, id_sens",  (error, results, fields) => {
+                    + "WHERE id_sens= ??"
+                    + "GROUP BY `data`, id_box, id_sens",
+                    [req.params.sensore],
+                    (error, results, fields) => {
     if (error) throw error;
     res.json(results);
   });

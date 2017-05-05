@@ -13,7 +13,7 @@ declare var $: any;
 export class TableComponent implements OnInit, AfterViewInit {
   public results: any[];
 
-  public radio: number = 1;
+  public radio: number = 3;
 
   public arrayDate: Date[] = [];
   public arrayArnie: number[] = [];
