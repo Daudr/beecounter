@@ -7,7 +7,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
 import { TableComponent } from './components/table/table.component';
 import { GraphComponent } from './components/graph/graph.component';
 
@@ -17,7 +16,6 @@ import { FooterComponent } from './components/footer/footer.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/table', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
   { path: 'table', component: TableComponent },
   { path: 'graph', component: GraphComponent }
 ];
@@ -25,7 +23,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     TableComponent,
     GraphComponent,
     NavbarComponent,
