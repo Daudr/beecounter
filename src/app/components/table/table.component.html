@@ -16,7 +16,7 @@
               <form>
                 <div class="radio">
                   <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked [checked]="!radio1">
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked [ngModel]="{checked: radio == 1}" (ngModelOnChange)="radio=1">
                     Singola data
                   </label><br><br>
                   <label for="inputdata">Data: </label>
@@ -25,7 +25,7 @@
                 <br>
                 <div class="radio">
                   <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" [checked]="!radio2">
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" [ngModel]="{checked: radio == 2}" (ngModelOnChange)="radio=2">
                     Intervallo di date
                   </label><br><br>
                   <label for="datada">Da: </label>
@@ -36,7 +36,7 @@
                 <br>
                 <div class="radio">
                   <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" [checked]="!radio3">
+                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" [ngModel]="{checked: radio == 3}" (ngModelOnChange)="radio=3">
                     Arnia
                   </label><br><br>
                   <label for="arnia">Arnia: </label>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="radio">
                   <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" [checked]="!radio4">
+                    <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" [ngModel]="{checked: radio == 4}" (ngModelOnChange)="radio=4">
                     Sensore
                   </label><br><br>
                   <label for="arnia">Sensore: </label>
@@ -71,7 +71,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let result of results; let i=index">
+          <tr *ngFor="let result of results">
             <td>{{ result.data | date:'d/M/y' }} </td>
             <td>{{result.id_box}}</td>
             <td>{{result.id_sens}}</td>

@@ -13,10 +13,7 @@ declare var $: any;
 export class TableComponent implements OnInit, AfterViewInit {
   public results: any[];
 
-  public radio1: boolean = true;
-  public radio2: boolean = false;
-  public radio3: boolean = false;
-  public radio4: boolean = false;
+  public radio: number = 1;
 
   public arrayDate: Date[] = [];
   public arrayArnie: number[] = [];
@@ -75,7 +72,7 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   query () {
     // this.results = null;
-    if (this.radio1) {    // Singola Data
+    if (this.radio == 1) {    // Singola Data
       this.db
   			.singolaDataTabella(this.singolaData)
   			.then((results: any[]) => {
@@ -83,7 +80,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   					return results;
   				});
   			});
-    } else if (this.radio2) {   // Intervallo date
+    } else if (this.radio == 2) {   // Intervallo date
       this.db
         .intervalloDateTabella(this.datada, this.dataa)
         .then((results: any[]) => {
@@ -91,7 +88,7 @@ export class TableComponent implements OnInit, AfterViewInit {
             return results;
           });
         });
-    } else if (this.radio3) {   // Sensore
+    } else if (this.radio == 3) {   // Sensore
       this.db
         .sensoreTabella(this.sensore)
         .then((results: any[]) => {
@@ -109,9 +106,6 @@ export class TableComponent implements OnInit, AfterViewInit {
         });
     }
 
-    console.log(this.radio1);
-    console.log(this.radio2);
-    console.log(this.radio3);
-    console.log(this.radio4);
+    console.log(this.radio);
   }
 }
