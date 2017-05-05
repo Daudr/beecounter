@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { DatabaseService } from '../../services/database.service';
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -11,15 +9,10 @@ import { DatabaseService } from '../../services/database.service';
 export class NavbarComponent implements OnInit {
 
   constructor(
-    private router: Router,
-    private db: DatabaseService
+    private router: Router
   ) { }
 
   ngOnInit() {
-  }
-
-  chiudiConnessione () {
-    this.db.close();
   }
 
 }
