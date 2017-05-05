@@ -49,7 +49,8 @@ app.get("/api/query/:data", (req, res, next) => {
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
                     + "FROM beecounter"
                     + "WHERE DATE(ts_sens) = '" + req.params.data + "'"
-                    + " GROUP BY `data`, id_box, id_sens",  (error, results, fields) => {
+                    + "GROUP BY `data`, id_box, id_sens",
+                    (error, results, fields) => {
     if (error) throw error;
     res.json(results);
   });
