@@ -67,7 +67,7 @@ app.get("/api/arniat/:arnia", (req, res, next) => {
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
                     + "FROM beecounter"
                     + "WHERE id_box= " + req.params.arnia
-                    + "GROUP BY `data`, id_box, id_sens",
+                    + " GROUP BY `data`, id_box, id_sens",
                     (error, results, fields) => {
     if (error) throw error;
     res.json(results);
