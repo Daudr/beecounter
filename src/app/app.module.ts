@@ -16,7 +16,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/table', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'table', component: TableComponent },
   { path: 'graph', component: GraphComponent }
