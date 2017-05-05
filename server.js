@@ -10,14 +10,16 @@ var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 app.use(cors());
 
+const connectionOptions = {                             // Per motivi di riservatezza le variabili di connessione al database sono segrete
+  host     : process.env.RDS_HOST || 'localhost',       // Modificare questi campi per far si che ci si connetta al giusto database
+  user     : process.env.RDS_USER || 'root',            //
+  password : process.env.RDS_PASSWORD || '',            //
+  database : process.env.RDS_DB || 'iot'                //
+};
+
 app.get("/api/query", (req, res, next) => {
 
-  var connection = mysql.createConnection({
-    host     : process.env.RDS_HOST || 'localhost',
-    user     : process.env.RDS_USER || 'root',
-    password : process.env.RDS_PASSWORD || '',
-    database : process.env.RDS_DB || 'iot'
-  });
+  var connection = mysql.createConnection(connectionOptions);
 
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` from beecounter GROUP BY `data`, id_box, id_sens", function (error, results, fields) {
     if (error) throw error;
@@ -28,12 +30,7 @@ app.get("/api/query", (req, res, next) => {
 });
 
 app.get("/api/query/:datada/:dataa", (req, res, next) => {
-  var connection = mysql.createConnection({
-    host     : process.env.RDS_HOST || 'localhost',
-    user     : process.env.RDS_USER || 'root',
-    password : process.env.RDS_PASSWORD || '',
-    database : process.env.RDS_DB || 'iot'
-  });
+  var connection = mysql.createConnection(connectionOptions);
 
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
                     + "FROM beecounter"
@@ -47,12 +44,7 @@ app.get("/api/query/:datada/:dataa", (req, res, next) => {
 });
 
 app.get("/api/query/:data", (req, res, next) => {
-  var connection = mysql.createConnection({
-    host     : process.env.RDS_HOST || 'localhost',
-    user     : process.env.RDS_USER || 'root',
-    password : process.env.RDS_PASSWORD || '',
-    database : process.env.RDS_DB || 'iot'
-  });
+  var connection = mysql.createConnection(connectionOptions);
 
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
                     + "FROM beecounter"
@@ -66,12 +58,7 @@ app.get("/api/query/:data", (req, res, next) => {
 });
 
 app.get("/api/arniat/:arnia", (req, res, next) => {
-  var connection = mysql.createConnection({
-    host     : process.env.RDS_HOST || 'localhost',
-    user     : process.env.RDS_USER || 'root',
-    password : process.env.RDS_PASSWORD || '',
-    database : process.env.RDS_DB || 'iot'
-  });
+  var connection = mysql.createConnection(connectionOptions);
 
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
                     + "FROM beecounter"
@@ -85,12 +72,7 @@ app.get("/api/arniat/:arnia", (req, res, next) => {
 });
 
 app.get("/api/sensoret/:sensore", (req, res, next) => {
-  var connection = mysql.createConnection({
-    host     : process.env.RDS_HOST || 'localhost',
-    user     : process.env.RDS_USER || 'root',
-    password : process.env.RDS_PASSWORD || '',
-    database : process.env.RDS_DB || 'iot'
-  });
+  var connection = mysql.createConnection(connectionOptions);
 
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
                     + "FROM beecounter"
@@ -104,12 +86,7 @@ app.get("/api/sensoret/:sensore", (req, res, next) => {
 });
 
 app.get("/api/graph", (req, res, next) => {
-  var connection = mysql.createConnection({
-    host     : process.env.RDS_HOST || 'localhost',
-    user     : process.env.RDS_USER || 'root',
-    password : process.env.RDS_PASSWORD || '',
-    database : process.env.RDS_DB || 'iot'
-  });
+  var connection = mysql.createConnection(connectionOptions);
 
   connection.query("SELECT DATE(ts_sens) AS `data`, SUM(beein) AS `in`, SUM(beeout) AS `out` from beecounter GROUP BY `data`", function (error, results, fields) {
     if (error) throw error;
