@@ -34,7 +34,7 @@ app.get("/api/query/:datada/:dataa", (req, res, next) => {
 
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
                     + "FROM beecounter"
-                    + "WHERE `data` BETWEEN '" + req.params.datada + "' AND '" + req.params.dataa + "'"
+                    + "WHERE DATE(ts_sens) BETWEEN '" + req.params.datada + "' AND '" + req.params.dataa + "'"
                     + " GROUP BY `data`, id_box, id_sens",  (error, results, fields) => {
     if (error) throw error;
     res.json(results);
@@ -48,7 +48,7 @@ app.get("/api/query/:data", (req, res, next) => {
 
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
                     + "FROM beecounter"
-                    + "WHERE `data` = '" + req.params.data + "'"
+                    + "WHERE DATE(ts_sens) = '" + req.params.data + "'"
                     + " GROUP BY `data`, id_box, id_sens",  (error, results, fields) => {
     if (error) throw error;
     res.json(results);
