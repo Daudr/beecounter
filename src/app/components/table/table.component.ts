@@ -65,9 +65,11 @@ export class TableComponent implements OnInit, AfterViewInit {
         this.maxDate = new DatePipe('it-IT').transform(this.arrayDate[this.arrayDate.length-1], 'yyyy-MM-dd');
 
         this.minArnia = Math.min.apply(null, this.arrayArnie);
+        this.arnia = this.minArnia;
         this.maxArnia = Math.max.apply(null, this.arrayArnie);
 
         this.minSensore = Math.min.apply(null, this.arraySensore);
+        this.sensore = this.minSensore;
         this.maxSensore = Math.max.apply(null, this.arraySensore);
 			});
 
@@ -79,7 +81,6 @@ export class TableComponent implements OnInit, AfterViewInit {
   */
 
   query () {
-    console.log('query');
     this.results = null;
     if (this.radio == 1) {    // Singola Data
       this.db
