@@ -61,8 +61,6 @@ app.get("/api/query/:datada/:dataa", (req, res, next) => {
 * "api/query/:data"
 *   GET: End Point che contiente la query per ottenere i dati della tabella beecounter in una singola data `data`
 *        Da usare per costruire la tabella dell'app
-*
-*   !! NON FUNZIONANTE AL MOMENTO !!
 */
 
 app.get("/api/query/:data", (req, res, next) => {
@@ -85,8 +83,6 @@ app.get("/api/query/:data", (req, res, next) => {
 * "api/arniat/:arnia"
 *   GET: End Point che contiente la query per ottenere i dati della tabella beecounter di una singola arnia `arnia`
 *        Da usare per costruire la tabella dell'app
-*
-*   !! NON FUNZIONANTE AL MOMENTO !!
 */
 
 app.get("/api/arniat/:arnia", (req, res, next) => {
@@ -108,8 +104,6 @@ app.get("/api/arniat/:arnia", (req, res, next) => {
 * "api/query/:sensore"
 *   GET: End Point che contiente la query per ottenere i dati della tabella beecounter di un singolo sensore `sensore`
 *        Da usare per costruire la tabella dell'app
-*
-*   !! NON FUNZIONANTE AL MOMENTO !!
 */
 
 app.get("/api/sensoret/:sensore", (req, res, next) => {
@@ -137,6 +131,50 @@ app.get("/api/graph", (req, res, next) => {
   var connection = mysql.createConnection(connectionOptions);
 
   connection.query("SELECT DATE(ts_sens) AS `data`, SUM(beein) AS `in`, SUM(beeout) AS `out` from beecounter GROUP BY `data`", function (error, results, fields) {
+    if (error) throw error;
+    res.json(results);
+  });
+
+  connection.end();
+});
+
+/**
+* "api/graph/:data"
+*   GET: End Point che contiente la query per ottenere i dati della tabella beecounter in una singola data `data`
+*        Da usare per il grafico dell'app
+*/
+
+app.get("/api/graph/:data", (req, res, next) => {
+  var connection = mysql.createConnection(connectionOptions);
+
+  connection.query("SELECT DATE(ts_sens) AS `data`, SUM(beein) AS `in`, SUM(beeout) AS `out` "
+                   + "FROM beecounter "
+                   + "GROUP BY `data` "
+                   + "HAVING `data` = ?",
+                   [req.params.data],
+                   function (error, results, fields) {
+    if (error) throw error;
+    res.json(results);
+  });
+
+  connection.end();
+});
+
+/**
+* "api/graph/:datada/:dataa"
+*   GET: End Point che contiente la query per ottenere i dati della tabella beecounter in un intervallo di date `datada` e `dataa`
+*        Da usare per il grafico dell'app
+*/
+
+app.get("/api/graph/:datada/:dataa", (req, res, next) => {
+  var connection = mysql.createConnection(connectionOptions);
+
+  connection.query("SELECT DATE(ts_sens) AS `data`, SUM(beein) AS `in`, SUM(beeout) AS `out` "
+                   + "FROM beecounter "
+                   + "GROUP BY `data` "
+                   + "HAVING `data` BETWEEN ? AND ?",
+                   [req.params.datada, req.params.dataa],
+                   function (error, results, fields) {
     if (error) throw error;
     res.json(results);
   });
