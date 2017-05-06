@@ -68,9 +68,9 @@ app.get("/api/query/:datada/:dataa", (req, res, next) => {
 app.get("/api/query/:data", (req, res, next) => {
   var connection = mysql.createConnection(connectionOptions);
 
-  connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
-                    + "FROM beecounter"
-                    + "GROUP BY `data`, id_box, id_sens"
+  connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
+                    + "FROM beecounter "
+                    + "GROUP BY `data`, id_box, id_sens "
                     + "HAVING `data` = ? ",
                     [req.params.data],
                     (error, results, fields) => {
