@@ -115,11 +115,10 @@ app.get("/api/arniat/:arnia", (req, res, next) => {
 app.get("/api/sensoret/:sensore", (req, res, next) => {
   var connection = mysql.createConnection(connectionOptions);
 
-  connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
-                    + "FROM beecounter"
-                    + "WHERE id_sens= ??"
-                    + "GROUP BY `data`, id_box, id_sens",
-                    [req.params.sensore],
+  connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
+                    + "FROM beecounter "
+                    + "GROUP BY `data`, id_box, id_sens "
+                    + "HAVING id_sens = " + req.params.sensore,
                     (error, results, fields) => {
     if (error) throw error;
     res.json(results);
