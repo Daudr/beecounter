@@ -76,12 +76,10 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   /**
   * Permette di modificare la tabella secondo i criteri scelti
-  *
-  * !! NON FUNZIONANTE !!
   */
 
   query () {
-    // this.results = null;
+    this.results = null;
     if (this.radio == 1) {    // Singola Data
       this.db
   			.singolaDataTabella(this.singolaData)
