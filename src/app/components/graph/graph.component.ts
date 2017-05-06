@@ -26,9 +26,9 @@ export class GraphComponent implements OnInit {
   public dataa: string;
   public datada: string;
 
-  public arnia: number;
-
-  public sensore: number;
+  public arrayDate: Date[];
+  public minDate: string;
+  public maxDate: string;
 
   public radio: number = 1;
 
@@ -46,6 +46,13 @@ export class GraphComponent implements OnInit {
 				this.results = results.map((results) => {
 					return results;
 				});
+
+        for (let i = 0; i < this.results.length; i++) {
+            this.arrayDate.push(this.results[i].data);
+        }
+
+        this.minDate = new DatePipe('it-IT').transform(this.arrayDate[0], 'yyyy-MM-dd');
+        this.maxDate = new DatePipe('it-IT').transform(this.arrayDate[this.arrayDate.length-1], 'yyyy-MM-dd');
 
         var barChartDataIn = [];
         var barChartDataOut = [];
