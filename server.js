@@ -39,17 +39,10 @@ app.get("/api/query", (req, res, next) => {
 * "api/query/:datada/:dataa"
 *   GET: End Point che contiente la query per ottenere i dati della tabella beecounter in un intervallo di date che va `datada` a `dataa`
 *        Da usare per costruire la tabella dell'app
-*
-*   !! NON FUNZIONANTE AL MOMENTO !!
 */
 
 app.get("/api/query/:datada/:dataa", (req, res, next) => {
   var connection = mysql.createConnection(connectionOptions);
-  
-  console.log("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
-                    + "FROM beecounter "
-                    + "WHERE DATE(ts_sens) BETWEEN ? AND ? "
-                    + " GROUP BY `data`, id_box, id_sens");
 
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                     + "FROM beecounter "
@@ -77,8 +70,8 @@ app.get("/api/query/:data", (req, res, next) => {
 
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
                     + "FROM beecounter"
-                    + "WHERE DATE(ts_sens) = ? "
-                    + "GROUP BY `data`, id_box, id_sens",
+                    + "GROUP BY `data`, id_box, id_sens"
+                    + "HAVING `data` = ? ",
                     [req.params.data],
                     (error, results, fields) => {
     if (error) throw error;
