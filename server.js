@@ -45,6 +45,11 @@ app.get("/api/query", (req, res, next) => {
 
 app.get("/api/query/:datada/:dataa", (req, res, next) => {
   var connection = mysql.createConnection(connectionOptions);
+  
+  console.log("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
+                    + "FROM beecounter "
+                    + "WHERE DATE(ts_sens) BETWEEN ? AND ? "
+                    + " GROUP BY `data`, id_box, id_sens");
 
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
                     + "FROM beecounter"
