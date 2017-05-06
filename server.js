@@ -54,8 +54,8 @@ app.get("/api/query/:datada/:dataa", (req, res, next) => {
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                     + "FROM beecounter "
                     + "GROUP BY `data`, id_box, id_sens "
-                    + "HAVING `data` BETWEEN '2017-02-27' AND '2017-02-28' ",
-                    /*[req.params.datada, req.params.dataa],*/
+                    + "HAVING `data` BETWEEN ? AND ? ",
+                    [req.params.datada, req.params.dataa],
                     (error, results, fields) => {
     if (error) throw error;
     res.json(results);
