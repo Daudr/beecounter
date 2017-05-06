@@ -13,7 +13,7 @@
         <div class="collapse panel-collapse" role=tabpanel id=collapseListGroup1 aria-labelledby=collapseListGroupHeading1>
           <div class="panel-body">
               Cerca:<br>
-              <form>
+              <form (submit)="query()">
                 <div class="radio">
                   <label>
                     <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked [(ngModel)]="radio">

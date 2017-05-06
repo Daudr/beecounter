@@ -73,6 +73,7 @@ export class GraphComponent implements OnInit {
   */
 
   query () {
+    console.log('query');
     this.results = null;
     if (this.radio == 1) {    // Singola Data
       this.db
