@@ -92,10 +92,10 @@ app.get("/api/query/:data", (req, res, next) => {
 app.get("/api/arniat/:arnia", (req, res, next) => {
   var connection = mysql.createConnection(connectionOptions);
 
-  connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out`"
-                    + "FROM beecounter"
-                    + "WHERE id_box= " + req.params.arnia
-                    + " GROUP BY `data`, id_box, id_sens",
+  connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
+                    + "FROM beecounter "
+                    + "GROUP BY `data`, id_box, id_sens "
+                    + "HAVING id_box= " + req.params.arnia,
                     (error, results, fields) => {
     if (error) throw error;
     res.json(results);
