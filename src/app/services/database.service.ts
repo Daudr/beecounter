@@ -10,7 +10,7 @@ export class DatabaseService {
 
   // Se si lavora in locale bisogna togliere il commento dalle righe con localhost e aggiungerlo a quelle senza
 
-  
+
   query (): Promise<any[]> {
     // return this.http.get('http://localhost:8080/api/query')
     return this.http.get('api/query')
@@ -54,6 +54,22 @@ export class DatabaseService {
   graph (): Promise<any[]> {
     // return this.http.get('http://localhost:8080/api/graph')
     return this.http.get('api/graph')
+    .toPromise()
+    .then(response => response.json() as any[])
+    .catch(this.handleError);
+  }
+
+  singolaDataGrafico (data: string): Promise<any[]> {
+    // return this.http.get('http://localhost:8080/api/graph/' + data)
+    return this.http.get('api/graph/' + data)
+    .toPromise()
+    .then(response => response.json() as any[])
+    .catch(this.handleError);
+  }
+
+  intervalloDateGrafico (datada: string, dataa: string): Promise<any[]> {
+    // return this.http.get('http://localhost:8080/api/graph/' + datada + '/' + dataa)
+    return this.http.get('api/graph/' + datada + '/' + dataa)
     .toPromise()
     .then(response => response.json() as any[])
     .catch(this.handleError);

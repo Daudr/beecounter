@@ -77,12 +77,13 @@ export class GraphComponent implements OnInit {
     this.graphLoaded = false;
     if (this.radio == 1) {    // Singola Data
       this.db
-  			.singolaDataTabella(this.singolaData)
+  			.singolaDataGrafico(this.singolaData)
   			.then((results: any[]) => {
   				this.results = results.map((results) => {
   					return results;
   				});
 
+          this.barChartLabels = [];
           var barChartDataIn = [];
           var barChartDataOut = [];
 
@@ -102,12 +103,13 @@ export class GraphComponent implements OnInit {
   			});
     } else if (this.radio == 2) {   // Intervallo date
       this.db
-        .intervalloDateTabella(this.datada, this.dataa)
+        .intervalloDateGrafico(this.datada, this.dataa)
         .then((results: any[]) => {
           this.results = results.map((results) => {
             return results;
           });
 
+          this.barChartLabels = [];
           var barChartDataIn = [];
           var barChartDataOut = [];
 

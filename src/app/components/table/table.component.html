@@ -20,7 +20,7 @@
                     Singola data
                   </label><br><br>
                   <label for="inputdata">Data: </label>
-                  <input type="date" id="inputdata" class="datepicker" name="data" value="Data" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 1" [(ngModel)]="singolaData">
+                  <input type="date" id="inputdata" class="datepicker" name="data" value="Data" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 1" [(ngModel)]="singolaData" required>
                 </div>
                 <br>
                 <div class="radio">
@@ -29,9 +29,9 @@
                     Intervallo di date
                   </label><br><br>
                   <label for="datada">Da: </label>
-                  <input type="date" id="datada" class="datepicker" name="datada" value="Data da" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="datada"><br><br>
+                  <input type="date" id="datada" class="datepicker" name="datada" value="Data da" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="datada" required><br><br>
                   <label for="dataa">A: </label>
-                  <input type="date" id="dataa" class="datepicker" name="dataa" value="A" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="dataa">
+                  <input type="date" id="dataa" class="datepicker" name="dataa" value="A" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="dataa" required>
                 </div>
                 <br>
                 <div class="radio">
@@ -40,7 +40,7 @@
                     Arnia
                   </label><br><br>
                   <label for="arnia">Arnia: </label>
-                  <input type="number" id="arnia" name="arnia" value="Arnia" min="{{this.minArnia}}" max="{{this.maxArnia}}" [disabled]="radio != 3" [(ngModel)]="arnia">
+                  <input type="number" id="arnia" name="arnia" value="Arnia" min="{{this.minArnia}}" max="{{this.maxArnia}}" [disabled]="radio != 3" [(ngModel)]="arnia" required>
                 </div>
                 <div class="radio">
                   <label>
@@ -48,7 +48,7 @@
                     Sensore
                   </label><br><br>
                   <label for="arnia">Sensore: </label>
-                  <input type="number" id="arnia" name="arnia" value="Arnia" min="{{this.minSensore}}" max="{{this.maxSensore}}" [disabled]="radio != 4" [(ngModel)]="sensore">
+                  <input type="number" id="arnia" name="arnia" value="Arnia" min="{{this.minSensore}}" max="{{this.maxSensore}}" [disabled]="radio != 4" [(ngModel)]="sensore" required>
                 </div>
                 <input type="submit" value="Invia" class="btn btn-primary">
               </form>
