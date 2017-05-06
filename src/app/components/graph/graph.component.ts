@@ -74,7 +74,7 @@ export class GraphComponent implements OnInit {
 
   query () {
     console.log('query');
-    this.results = null;
+    this.graphLoaded = false;
     if (this.radio == 1) {    // Singola Data
       this.db
   			.singolaDataTabella(this.singolaData)
@@ -82,6 +82,23 @@ export class GraphComponent implements OnInit {
   				this.results = results.map((results) => {
   					return results;
   				});
+
+          var barChartDataIn = [];
+          var barChartDataOut = [];
+
+          for (var i=0;i<this.results.length;i++) {
+            this.barChartLabels.push(new DatePipe('it-IT').transform(this.results[i].data, 'dd/MM/yyyy'));
+
+            barChartDataIn.push(this.results[i].in);
+            barChartDataOut.push(this.results[i].out);
+          }
+
+          this.barChartData = [
+            {data: barChartDataIn, label: 'Entrate'},
+            {data: barChartDataOut, label: 'Uscite'}
+          ];
+
+          this.graphLoaded = true;
   			});
     } else if (this.radio == 2) {   // Intervallo date
       this.db
@@ -90,6 +107,23 @@ export class GraphComponent implements OnInit {
           this.results = results.map((results) => {
             return results;
           });
+
+          var barChartDataIn = [];
+          var barChartDataOut = [];
+
+          for (var i=0;i<this.results.length;i++) {
+            this.barChartLabels.push(new DatePipe('it-IT').transform(this.results[i].data, 'dd/MM/yyyy'));
+
+            barChartDataIn.push(this.results[i].in);
+            barChartDataOut.push(this.results[i].out);
+          }
+
+          this.barChartData = [
+            {data: barChartDataIn, label: 'Entrate'},
+            {data: barChartDataOut, label: 'Uscite'}
+          ];
+
+          this.graphLoaded = true;
         });
     }
   }
