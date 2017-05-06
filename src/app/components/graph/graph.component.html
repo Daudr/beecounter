@@ -34,23 +34,6 @@
                     <label for="dataa">A: </label>
                     <input type="date" id="dataa" class="datepicker" name="dataa" value="A" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="dataa">
                   </div>
-                  <br>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" [ngModel]="{checked: radio == 3}" (ngModelOnChange)="radio=3">
-                      Arnia
-                    </label><br><br>
-                    <label for="arnia">Arnia: </label>
-                    <input type="number" id="arnia" name="arnia" value="Arnia" min="{{this.minArnia}}" max="{{this.maxArnia}}" [disabled]="radio != 3" [(ngModel)]="arnia">
-                  </div>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" [ngModel]="{checked: radio == 4}" (ngModelOnChange)="radio=4">
-                      Sensore
-                    </label><br><br>
-                    <label for="arnia">Sensore: </label>
-                    <input type="number" id="arnia" name="arnia" value="Arnia" min="{{this.minSensore}}" max="{{this.maxSensore}}" [disabled]="radio != 4" [(ngModel)]="sensore">
-                  </div>
                 </form>
 
               <button class="btn btn-primary" (click)="query()">QUERY</button>
