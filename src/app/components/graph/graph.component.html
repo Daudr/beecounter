@@ -1,46 +1,47 @@
 <div class="main">
 
+<div *ngIf="graphLoaded==true; else loading">
   <div class=panel-group role=tablist>
-      <div class=panel-group role=tablist>
-        <div class="panel panel-default">
-          <a href=#collapseListGroup1 class=collapsed role=button data-toggle=collapse aria-expanded=false aria-controls=collapseListGroup1>
-            <div class=panel-heading role=tab id=collapseListGroupHeading1>
-              <h4 class="panel-title center">
-                Opzioni
-              </h4>
-            </div>
-          </a>
-          <div class="collapse panel-collapse" role=tabpanel id=collapseListGroup1 aria-labelledby=collapseListGroupHeading1>
-            <div class="panel-body">
-                Cerca:<br>
-                <form (submit)="query()">
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked [(ngModel)]="radio">
-                      Singola data
-                    </label><br><br>
-                    <label for="inputdata">Data: </label>
-                    <input type="date" id="inputdata" class="datepicker" name="data" value="Data" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 1" [(ngModel)]="singolaData">
-                  </div>
-                  <br>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="2" [(ngModel)]="radio">
-                      Intervallo di date
-                    </label><br><br>
-                    <label for="datada">Da: </label>
-                    <input type="date" id="datada" class="datepicker" name="datada" value="Data da" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="datada"><br><br>
-                    <label for="dataa">A: </label>
-                    <input type="date" id="dataa" class="datepicker" name="dataa" value="A" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="dataa">
-                  </div>
-                  <input type="submit" value="Invia" class="btn btn-primary">
-                </form>
-            </div>
+    <div class=panel-group role=tablist>
+      <div class="panel panel-default">
+        <a href=#collapseListGroup1 class=collapsed role=button data-toggle=collapse aria-expanded=false aria-controls=collapseListGroup1>
+          <div class=panel-heading role=tab id=collapseListGroupHeading1>
+            <h4 class="panel-title center">
+              Opzioni
+            </h4>
+          </div>
+        </a>
+        <div class="collapse panel-collapse" role=tabpanel id=collapseListGroup1 aria-labelledby=collapseListGroupHeading1>
+          <div class="panel-body">
+              Cerca:<br>
+              <form (submit)="query()">
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked [(ngModel)]="radio">
+                    Singola data
+                  </label><br><br>
+                  <label for="inputdata">Data: </label>
+                  <input type="date" id="inputdata" class="datepicker" name="data" value="Data" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 1" [(ngModel)]="singolaData">
+                </div>
+                <br>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="2" [(ngModel)]="radio">
+                    Intervallo di date
+                  </label><br><br>
+                  <label for="datada">Da: </label>
+                  <input type="date" id="datada" class="datepicker" name="datada" value="Data da" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="datada"><br><br>
+                  <label for="dataa">A: </label>
+                  <input type="date" id="dataa" class="datepicker" name="dataa" value="A" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="dataa">
+                </div>
+                <input type="submit" value="Invia" class="btn btn-primary">
+              </form>
           </div>
         </div>
       </div>
-
-  <div style="display: block" *ngIf="graphLoaded==true; else loading">
+    </div>
+  </div>
+  <div style="display: block">
     <canvas baseChart
             [datasets]="barChartData"
             [labels]="barChartLabels"
@@ -48,6 +49,8 @@
             [legend]="barChartLegend"
             [chartType]="barChartType"></canvas>
   </div>
+</div>
+
 
   <ng-template #loading>
     <h3 class="text-primary center">Caricamento grafico in corso...</h3>
