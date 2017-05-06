@@ -26,7 +26,7 @@ export class GraphComponent implements OnInit {
   public dataa: string;
   public datada: string;
 
-  public arrayDate: Date[];
+  public arrayDate: Date[] = [];
   public minDate: string;
   public maxDate: string;
 
