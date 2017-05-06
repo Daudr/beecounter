@@ -1,23 +1,22 @@
 <div class="main">
 
   <div class=panel-group role=tablist>
-    <!-- Opzioni per fare tabelle in base criteri scelti dall'utente - Al momento non funzionante
       <div class=panel-group role=tablist>
         <div class="panel panel-default">
-          <div class=panel-heading role=tab id=collapseListGroupHeading1>
-            <a href=#collapseListGroup1 class=collapsed role=button data-toggle=collapse aria-expanded=false aria-controls=collapseListGroup1>
+          <a href=#collapseListGroup1 class=collapsed role=button data-toggle=collapse aria-expanded=false aria-controls=collapseListGroup1>
+            <div class=panel-heading role=tab id=collapseListGroupHeading1>
               <h4 class="panel-title center">
                 Opzioni
               </h4>
-            </a>
-          </div>
+            </div>
+          </a>
           <div class="collapse panel-collapse" role=tabpanel id=collapseListGroup1 aria-labelledby=collapseListGroupHeading1>
             <div class="panel-body">
                 Cerca:<br>
-                <form>
+                <form (submit)="query()">
                   <div class="radio">
                     <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked [ngModel]="{checked: radio == 1}" (ngModelOnChange)="radio=1">
+                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked [(ngModel)]="radio">
                       Singola data
                     </label><br><br>
                     <label for="inputdata">Data: </label>
@@ -26,7 +25,7 @@
                   <br>
                   <div class="radio">
                     <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" [ngModel]="{checked: radio == 2}" (ngModelOnChange)="radio=2">
+                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="2" [(ngModel)]="radio">
                       Intervallo di date
                     </label><br><br>
                     <label for="datada">Da: </label>
@@ -34,14 +33,12 @@
                     <label for="dataa">A: </label>
                     <input type="date" id="dataa" class="datepicker" name="dataa" value="A" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="dataa">
                   </div>
+                  <input type="submit" value="Invia" class="btn btn-primary">
                 </form>
-
-              <button class="btn btn-primary" (click)="query()">QUERY</button>
             </div>
           </div>
         </div>
       </div>
-    -->
 
   <div style="display: block" *ngIf="graphLoaded==true; else loading">
     <canvas baseChart

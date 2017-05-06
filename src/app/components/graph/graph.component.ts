@@ -30,7 +30,7 @@ export class GraphComponent implements OnInit {
 
   public sensore: number;
 
-  public radio;
+  public radio: number = 1;
 
   constructor(
     private db: DatabaseService
