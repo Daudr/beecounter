@@ -21,10 +21,10 @@ export class GraphComponent implements OnInit {
 
   public barChartData:any[] = [];
 
-  public singolaData: Date;
+  public singolaData: string;
 
-  public dataa: Date;
-  public datada: Date;
+  public dataa: string;
+  public datada: string;
 
   public arnia: number;
 
@@ -73,7 +73,24 @@ export class GraphComponent implements OnInit {
   */
 
   query () {
-
+    this.results = null;
+    if (this.radio == 1) {    // Singola Data
+      this.db
+  			.singolaDataTabella(this.singolaData)
+  			.then((results: any[]) => {
+  				this.results = results.map((results) => {
+  					return results;
+  				});
+  			});
+    } else if (this.radio == 2) {   // Intervallo date
+      this.db
+        .intervalloDateTabella(this.datada, this.dataa)
+        .then((results: any[]) => {
+          this.results = results.map((results) => {
+            return results;
+          });
+        });
+    }
   }
 
 }

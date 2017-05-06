@@ -27,7 +27,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   public maxSensore: number;            // numero dell'ultimo sensore
 
   // Attributi utili per le opzioni
-  public radio: number = 3;
+  public radio: number = 1;
 
   public singolaData: string;
 
