@@ -4,11 +4,6 @@
 /dist
 /tmp
 
-# Cordova files
-/cordova/platforms/android
-/cordova/platforms/browser
-/cordova/platforms/ios
-/cordova/www/*
 
 # dependencies
 /node_modules
