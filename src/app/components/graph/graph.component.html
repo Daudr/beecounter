@@ -21,7 +21,7 @@
                     Singola data
                   </label><br><br>
                   <label for="inputdata">Data: </label>
-                  <input type="date" id="inputdata" class="datepicker" name="data" value="Data" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 1" [(ngModel)]="singolaData">
+                  <input type="date" id="inputdata" name="data" value={{this.minDate}} min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 1" [(ngModel)]="singolaData">
                 </div>
                 <br>
                 <div class="radio">
@@ -30,9 +30,9 @@
                     Intervallo di date
                   </label><br><br>
                   <label for="datada">Da: </label>
-                  <input type="date" id="datada" class="datepicker" name="datada" value="Data da" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="datada"><br><br>
+                  <input type="date" id="datada" name="datada" value={{this.minDate}} min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="datada"><br><br>
                   <label for="dataa">A: </label>
-                  <input type="date" id="dataa" class="datepicker" name="dataa" value="A" min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="dataa">
+                  <input type="date" id="dataa" name="dataa" value={{this.minDate}} min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="dataa">
                 </div>
                 <input type="submit" value="Invia" class="btn btn-primary">
               </form>
