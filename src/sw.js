@@ -17,8 +17,18 @@ self.addEventListener('install', function(event) {
         'styles.bundle.js',
         'vendor.bundle.js',
         'main.bundle.js',
+        'assets/css/bootsrap.min.css',
+        'assets/js/bootstrap.min.js',
+        'assets/js/jquery.3.2.1.min.js',
         'assets/js/sw.js',
         'assets/img/beehive.png',
+        'assets/icons/beehive16.png',
+        'assets/icons/beehive24.png',
+        'assets/icons/beehive32.png',
+        'assets/icons/beehive64.png',
+        'assets/icons/beehive128.png',
+        'assets/icons/beehive256.png',
+        'assets/icons/beehive512.png',
       ]);
     })
   );
