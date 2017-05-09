@@ -80,38 +80,39 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   query () {
     this.results = null;
-    if (this.radio == 1) {    // Singola Data
-      this.db
-  			.singolaDataTabella(this.singolaData)
-  			.then((results: any[]) => {
-  				this.results = results.map((results) => {
-  					return results;
-  				});
-  			});
-    } else if (this.radio == 2) {   // Intervallo date
-      this.db
-        .intervalloDateTabella(this.datada, this.dataa)
-        .then((results: any[]) => {
-          this.results = results.map((results) => {
-            return results;
+    switch (this.radio) {
+      case 1:                 // Singola Data
+        this.db
+    			.singolaDataTabella(this.singolaData)
+    			.then((results: any[]) => {
+    				this.results = results.map((results) => {
+    					return results;
+    				});
+    			});
+      case 2:                 // Intervallo date
+        this.db
+          .intervalloDateTabella(this.datada, this.dataa)
+          .then((results: any[]) => {
+            this.results = results.map((results) => {
+              return results;
+            });
           });
-        });
-    } else if (this.radio == 3) {   // Sensore
-      this.db
-        .arniaTabella(this.arnia)
-        .then((results: any[]) => {
-          this.results = results.map((results) => {
-            return results;
+      case 3:                 // Sensore
+        this.db
+          .arniaTabella(this.arnia)
+          .then((results: any[]) => {
+            this.results = results.map((results) => {
+              return results;
+            });
           });
-        });
-    } else {                    // Arnia
-      this.db
-        .sensoreTabella(this.sensore)
-        .then((results: any[]) => {
-          this.results = results.map((results) => {
-            return results;
+      case 4:                   // Arnia
+        this.db
+          .sensoreTabella(this.sensore)
+          .then((results: any[]) => {
+            this.results = results.map((results) => {
+              return results;
+            });
           });
-        });
-    }
+      }
   }
 }
