@@ -11,7 +11,6 @@ Adesso è possibile recarsi a `http://localhost/4200` per testare l'applicazione
 Il sito dove poter trovare l'applicazione è [Bee Counter](https://beecounter.herokuapp.com).
 
 ## Installazione applicazione
-Se si vuole installare l'applicazione bisogna rimuovere il commento allo script con `src="assets/js/sw.js"` di `src/index.html` (Attenzione! Questo salverà nella cache il sito impedendo di vedere futuri aggiornamenti).
 Per poter installare l'applicazione sul proprio dispositivo è necessario utilizzare [Chrome](https://www.google.it/chrome/browser/desktop/) e:  
 
   * Dispositivo desktop 
