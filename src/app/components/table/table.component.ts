@@ -89,6 +89,7 @@ export class TableComponent implements OnInit, AfterViewInit {
     					return results;
     				});
     			});
+        break;
       case 2:                 // Intervallo date
         this.db
           .intervalloDateTabella(this.datada, this.dataa)
@@ -97,6 +98,7 @@ export class TableComponent implements OnInit, AfterViewInit {
               return results;
             });
           });
+        break;
       case 3:                 // Sensore
         this.db
           .arniaTabella(this.arnia)
@@ -105,6 +107,7 @@ export class TableComponent implements OnInit, AfterViewInit {
               return results;
             });
           });
+        break;
       case 4:                   // Arnia
         this.db
           .sensoreTabella(this.sensore)
@@ -113,6 +116,7 @@ export class TableComponent implements OnInit, AfterViewInit {
               return results;
             });
           });
+        break;
       }
   }
 }
