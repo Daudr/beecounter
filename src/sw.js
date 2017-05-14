@@ -21,7 +21,6 @@ self.addEventListener('install', function(event) {
         'assets/js/bootstrap.min.js',
         'assets/js/jquery.3.2.1.min.js',
         'assets/js/Chart.bundle.min.js',
-        'assets/js/sw.js',
         'assets/img/beehive.png',
         'assets/icons/beehive16.png',
         'assets/icons/beehive24.png',
