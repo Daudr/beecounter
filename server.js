@@ -27,7 +27,7 @@ app.get("/api/query", (req, res, next) => {
 
   var connection = mysql.createConnection(connectionOptions);
 
-  connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
+  connection.query("SELECT DATE(ts_sens) AS `data`, DATE_FORMAT(ts_sens, '%h') AS `ora`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                 + "FROM beecounter "
                 + "GROUP BY `data`, id_box, id_sens "
                 + "HAVING `in` <> 0 OR `out` <> 0",
@@ -48,7 +48,7 @@ app.get("/api/query", (req, res, next) => {
 app.get("/api/query/:datada/:dataa", (req, res, next) => {
   var connection = mysql.createConnection(connectionOptions);
 
-  connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
+  connection.query("SELECT DATE(ts_sens) AS `data`, DATE_FORMAT(ts_sens, '%h') AS `ora`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                     + "FROM beecounter "
                     + "GROUP BY `data`, id_box, id_sens "
                     + "HAVING `data` BETWEEN ? AND ? "
@@ -71,7 +71,7 @@ app.get("/api/query/:datada/:dataa", (req, res, next) => {
 app.get("/api/query/:data", (req, res, next) => {
   var connection = mysql.createConnection(connectionOptions);
 
-  connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
+  connection.query("SELECT DATE(ts_sens) AS `data`, DATE_FORMAT(ts_sens, '%h') AS `ora`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                     + "FROM beecounter "
                     + "GROUP BY `data`, id_box, id_sens "
                     + "HAVING `data` = ? "
@@ -94,7 +94,7 @@ app.get("/api/query/:data", (req, res, next) => {
 app.get("/api/arniat/:arnia", (req, res, next) => {
   var connection = mysql.createConnection(connectionOptions);
 
-  connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
+  connection.query("SELECT DATE(ts_sens) AS `data`, DATE_FORMAT(ts_sens, '%h') AS `ora`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                     + "FROM beecounter "
                     + "GROUP BY `data`, id_box, id_sens "
                     + "HAVING id_box= " + req.params.arnia
@@ -116,7 +116,7 @@ app.get("/api/arniat/:arnia", (req, res, next) => {
 app.get("/api/sensoret/:sensore", (req, res, next) => {
   var connection = mysql.createConnection(connectionOptions);
 
-  connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
+  connection.query("SELECT DATE(ts_sens) AS `data`, DATE_FORMAT(ts_sens, '%h') AS `ora`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                     + "FROM beecounter "
                     + "GROUP BY `data`, id_box, id_sens "
                     + "HAVING id_sens = " + req.params.sensore
