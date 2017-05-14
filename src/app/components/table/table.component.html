@@ -73,7 +73,7 @@
         <tbody>
           <tr *ngFor="let result of results">
             <td>{{ result.data | date:'d/M/y' }} </td>
-            <td>{{ result.ora | date:'HH:mm' }}</td>
+            <td>{{ result.ora + ":00" }}</td>
             <td>{{result.id_box}}</td>
             <td>{{result.id_sens}}</td>
             <td>{{result.in}}</td>
