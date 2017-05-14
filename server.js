@@ -51,7 +51,8 @@ app.get("/api/query/:datada/:dataa", (req, res, next) => {
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                     + "FROM beecounter "
                     + "GROUP BY `data`, id_box, id_sens "
-                    + "HAVING `data` BETWEEN ? AND ? ",
+                    + "HAVING `data` BETWEEN ? AND ? "
+                    + " AND `in` <> 0 OR `out` <> 0",
                     [req.params.datada, req.params.dataa],
                     (error, results, fields) => {
     if (error) throw error;
@@ -73,7 +74,8 @@ app.get("/api/query/:data", (req, res, next) => {
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                     + "FROM beecounter "
                     + "GROUP BY `data`, id_box, id_sens "
-                    + "HAVING `data` = ? ",
+                    + "HAVING `data` = ? "
+                    + " AND `in` <> 0 OR `out` <> 0",
                     [req.params.data],
                     (error, results, fields) => {
     if (error) throw error;
@@ -95,7 +97,8 @@ app.get("/api/arniat/:arnia", (req, res, next) => {
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                     + "FROM beecounter "
                     + "GROUP BY `data`, id_box, id_sens "
-                    + "HAVING id_box= " + req.params.arnia,
+                    + "HAVING id_box= " + req.params.arnia
+                    + " AND `in` <> 0 OR `out` <> 0",
                     (error, results, fields) => {
     if (error) throw error;
     res.json(results);
@@ -116,7 +119,8 @@ app.get("/api/sensoret/:sensore", (req, res, next) => {
   connection.query("SELECT DATE(ts_sens) AS `data`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                     + "FROM beecounter "
                     + "GROUP BY `data`, id_box, id_sens "
-                    + "HAVING id_sens = " + req.params.sensore,
+                    + "HAVING id_sens = " + req.params.sensore
+                    + " AND `in` <> 0 OR `out` <> 0",
                     (error, results, fields) => {
     if (error) throw error;
     res.json(results);
