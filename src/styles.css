@@ -36,6 +36,10 @@ div.margin {
   border-right: 0 !important;
 }
 
+.p-hand {
+  cursor: pointer;
+}
+
 .material-icons.md-36 {
   font-size: 36px;
 }

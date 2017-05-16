@@ -61,13 +61,13 @@
       <table class="table table-bordered table-hover">
         <thead class="arrow-header">
           <tr>
-            <td class="no-border-right" (click)="console.log('left')"><i class="material-icons md-36">keyboard_arrow_left</i></td>
+            <td class="no-border-right p-hand" (click)="i = i - 999"><i class="material-icons md-36">keyboard_arrow_left</i></td>
             <td class="no-border"></td>
             <td class="no-border"></td>
             <td class="no-border"></td>
             <td class="no-border"></td>
             <td class="no-border"></td>
-            <td class="no-border-left" (click)="console.log('right')"><i class="material-icons md-36 key-right">keyboard_arrow_right</i></td>
+            <td class="no-border-left p-hand" (click)="i = i + 999"><i class="material-icons md-36 key-right">keyboard_arrow_right</i></td>
           </tr>
           <tr>
             <td>Data</td>
@@ -80,7 +80,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let result of results">
+          <tr *ngFor="let i = 0; let (results ? results.slice(i,i+999): []) result of results">
             <td>{{ result.data | date:'d/M/y' }} </td>
             <td>{{ result.ora + ":00" }}</td>
             <td>{{result.id_box}}</td>
