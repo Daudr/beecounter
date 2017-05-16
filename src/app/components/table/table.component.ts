@@ -119,12 +119,4 @@ export class TableComponent implements OnInit, AfterViewInit {
         });
     }
   }
-
-  add () {
-    if (this.index < this.results.length) this.index = this.index + 999;
-  }
-
-  decrease () {
-    if (this.index > 0) this.index = this.index - 999;
-  }
 }
