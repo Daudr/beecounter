@@ -55,8 +55,6 @@ export class TableComponent implements OnInit, AfterViewInit {
 					return results;
 				});
 
-        console.log(this.results);
-
         for (let i = 0; i < this.results.length; i++) {
             this.arrayDate.push(this.results[i].data);
             this.arrayArnie.push(this.results[i].id_box);
