@@ -116,4 +116,12 @@ export class TableComponent implements OnInit, AfterViewInit {
         });
     }
   }
+
+  add () {
+    if (this.i < this.results.length) this.i = this.i + 999;
+  }
+
+  decrease () {
+    if (this.i > 0) this.i = this.i - 999;
+  }
 }
