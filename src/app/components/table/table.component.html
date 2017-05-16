@@ -61,13 +61,13 @@
       <table class="table table-bordered table-hover">
         <thead class="arrow-header">
           <tr>
-            <td class="no-border-right p-hand" (click)="index = index + 999" id="add"><i class="material-icons md-36" *ngIf="index < results.length">keyboard_arrow_left</i></td>
+            <td class="no-border-right p-hand"><i class="material-icons md-36" (click)="index = index - 999" *ngIf="index > 0">keyboard_arrow_left</i></td>
             <td class="no-border"></td>
             <td class="no-border"></td>
             <td class="no-border"></td>
             <td class="no-border"></td>
             <td class="no-border"></td>
-            <td class="no-border-left p-hand" (click)="index = index - 999" id="decrease"><i class="material-icons md-36 key-right" *ngIf="index > 0">keyboard_arrow_right</i></td>
+            <td class="no-border-left p-hand"><i class="material-icons md-36 key-right" (click)="index = index + 999" *ngIf="index < results.length">keyboard_arrow_right</i></td>
           </tr>
           <tr>
             <td>Data</td>
