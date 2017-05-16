@@ -20,11 +20,11 @@ div.margin {
 }
 
 .key-right {
-
+  float: right;
 }
 
-.key-left {
-
+.material-icons.md-36 {
+  font-size: 36px;
 }
 
 /* Material Design Icons */
