@@ -24,16 +24,16 @@ div.margin {
 }
 
 .no-border {
-  border-left: 0;
-  border-right: 0;
+  border-left: 0 !important;
+  border-right: 0 !important;
 }
 
 .no-border-left {
-  border-left: 0;
+  border-left: 0 !important;
 }
 
 .no-border-right {
-  border-right: 0;
+  border-right: 0 !important;
 }
 
 .material-icons.md-36 {
