@@ -38,7 +38,7 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   public sensore: number;
 
-  public i: number = 0;
+  public index: number = 0;
 
   constructor(
     private db: DatabaseService
@@ -56,6 +56,8 @@ export class TableComponent implements OnInit, AfterViewInit {
 				this.results = results.map((results) => {
 					return results;
 				});
+
+        this.index = 0;
 
         for (let i = 0; i < this.results.length; i++) {
             this.arrayDate.push(this.results[i].data);
@@ -82,6 +84,7 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   query () {
     this.results = null;
+    this.index = 0;
     if (this.radio == 1) {    // Singola Data
       this.db
   			.singolaDataTabella(this.singolaData)
@@ -118,10 +121,10 @@ export class TableComponent implements OnInit, AfterViewInit {
   }
 
   add () {
-    if (this.i < this.results.length) this.i = this.i + 999;
+    if (this.index < this.results.length) this.index = this.index + 999;
   }
 
   decrease () {
-    if (this.i > 0) this.i = this.i - 999;
+    if (this.index > 0) this.index = this.index - 999;
   }
 }
