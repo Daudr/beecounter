@@ -38,6 +38,8 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   public sensore: number;
 
+  public i: number = 0;
+
   constructor(
     private db: DatabaseService
   ) { }
