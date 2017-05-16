@@ -16,8 +16,6 @@ div.margin {
 }
 
 .arrow-header {
-  display: table-header-group;
-  vertical-align: middle;
   height: 36px;
 }
 
