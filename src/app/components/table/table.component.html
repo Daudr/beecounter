@@ -61,13 +61,13 @@
       <table class="table table-bordered table-hover">
         <thead class="arrow-header">
           <tr>
-            <td class="no-border-right"><i class="material-icons md-36 p-hand" (click)="index = index - 999" *ngIf="index > 0">keyboard_arrow_left</i></td>
+            <td class="no-border-right"><i class="material-icons md-36 p-hand" (click)="index = index - 499" *ngIf="index > 0">keyboard_arrow_left</i></td>
             <td class="no-border"></td>
             <td class="no-border"></td>
             <td class="no-border"></td>
             <td class="no-border"></td>
             <td class="no-border"></td>
-            <td class="no-border-left"><i class="material-icons md-36 key-right p-hand" (click)="index = index + 999" *ngIf="index < results.length">keyboard_arrow_right</i></td>
+            <td class="no-border-left"><i class="material-icons md-36 key-right p-hand" (click)="index = index + 499" *ngIf="!index > results.length">keyboard_arrow_right</i></td>
           </tr>
           <tr>
             <td>Data</td>
@@ -80,7 +80,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let result of (results ? results.slice(index,index+999): [])">
+          <tr *ngFor="let result of (results ? results.slice(index,index+499): [])">
             <td>{{ result.data | date:'d/M/y' }} </td>
             <td>{{ result.ora + ":00" }}</td>
             <td>{{result.id_box}}</td>
