@@ -80,7 +80,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let result of (results ? results.slice(index,index+499): results)">
+          <tr *ngFor="let result of results.slice(index,index+499)">
             <td>{{ result.data | date:'d/M/y' }} </td>
             <td>{{ result.ora + ":00" }}</td>
             <td>{{result.id_box}}</td>
