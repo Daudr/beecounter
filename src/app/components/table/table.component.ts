@@ -58,6 +58,7 @@ export class TableComponent implements OnInit, AfterViewInit {
 				});
 
         this.index = 0;
+        console.log(this.results);
 
         for (let i = 0; i < this.results.length; i++) {
             this.arrayDate.push(this.results[i].data);
@@ -92,6 +93,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   				this.results = results.map((results) => {
   					return results;
   				});
+          console.log(this.results);
   			});
     } else if (this.radio == 2) {   // Intervallo date
       this.db
