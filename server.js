@@ -75,7 +75,7 @@ app.get("/api/query/:data", (req, res, next) => {
                     + "FROM beecounter "
                     + "GROUP BY `data`, `ora`, id_box, id_sens "
                     + "HAVING `data` = ? "
-                    + " AND `in` <> 0 OR `out` <> 0",
+                    + " AND (`in` <> 0 OR `out` <> 0)",
                     [req.params.data],
                     (error, results, fields) => {
     if (error) throw error;
