@@ -52,7 +52,7 @@ app.get("/api/query/:datada/:dataa", (req, res, next) => {
                     + "FROM beecounter "
                     + "GROUP BY `data`, `ora`, id_box, id_sens "
                     + "HAVING `data` BETWEEN ? AND ? "
-                    + " AND `in` <> 0 OR `out` <> 0",
+                    + " AND (`in` <> 0 OR `out` <> 0)",
                     [req.params.datada, req.params.dataa],
                     (error, results, fields) => {
     if (error) throw error;
@@ -98,7 +98,7 @@ app.get("/api/arniat/:arnia", (req, res, next) => {
                     + "FROM beecounter "
                     + "GROUP BY `data`, `ora`, id_box, id_sens "
                     + "HAVING id_box= " + req.params.arnia
-                    + " AND `in` <> 0 OR `out` <> 0",
+                    + " AND (`in` <> 0 OR `out` <> 0)",
                     (error, results, fields) => {
     if (error) throw error;
     res.json(results);
@@ -120,7 +120,7 @@ app.get("/api/sensoret/:sensore", (req, res, next) => {
                     + "FROM beecounter "
                     + "GROUP BY `data`, `ora`, id_box, id_sens "
                     + "HAVING id_sens = " + req.params.sensore
-                    + " AND `in` <> 0 OR `out` <> 0",
+                    + " AND (`in` <> 0 OR `out` <> 0)",
                     (error, results, fields) => {
     if (error) throw error;
     res.json(results);
