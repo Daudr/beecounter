@@ -97,8 +97,9 @@ app.get("/api/arniat/:arnia", (req, res, next) => {
   connection.query("SELECT DATE(ts_sens) AS `data`, DATE_FORMAT(ts_sens, '%H') AS `ora`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                     + "FROM beecounter "
                     + "GROUP BY `data`, `ora`, id_box, id_sens "
-                    + "HAVING id_box= " + req.params.arnia
+                    + "HAVING id_box= ? "
                     + " AND (`in` <> 0 OR `out` <> 0)",
+                   [req.params.arnia],
                     (error, results, fields) => {
     if (error) throw error;
     res.json(results);
@@ -119,8 +120,9 @@ app.get("/api/sensoret/:sensore", (req, res, next) => {
   connection.query("SELECT DATE(ts_sens) AS `data`, DATE_FORMAT(ts_sens, '%H') AS `ora`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                     + "FROM beecounter "
                     + "GROUP BY `data`, `ora`, id_box, id_sens "
-                    + "HAVING id_sens = " + req.params.sensore
+                    + "HAVING id_sens = ? "
                     + " AND (`in` <> 0 OR `out` <> 0)",
+                   [req.params.sensore],
                     (error, results, fields) => {
     if (error) throw error;
     res.json(results);
