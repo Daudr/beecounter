@@ -73,11 +73,15 @@ export class GraphComponent implements OnInit {
 			});
   }
 
-  /**
-  * Permette di modificare il grafico secondo i criteri scelti
-  *
-  * !! IN SVILUPPO !!
-  */
+  resetQuery () {
+    this.db
+      .graph()
+      .then((results: any[]) => {
+        this.results = results.map((results) => {
+          return results;
+        });
+      });
+  }
 
   query () {
     this.graphLoaded = false;

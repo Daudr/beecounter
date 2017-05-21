@@ -51,6 +51,7 @@
                   <input type="number" id="sensore" name="sensore" value="{{sensore}}" min="{{this.minSensore}}" max="{{this.maxSensore}}" [disabled]="radio != 4" [(ngModel)]="sensore" required>
                 </div>
                 <input type="submit" value="Invia" class="btn btn-primary">
+                <input type="button" (click)="resetQuery()" class="btn btn-default">
               </form>
           </div>
         </div>

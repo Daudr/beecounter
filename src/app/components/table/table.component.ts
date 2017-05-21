@@ -82,6 +82,16 @@ export class TableComponent implements OnInit, AfterViewInit {
   * Permette di modificare la tabella secondo i criteri scelti
   */
 
+  resetQuery () {
+    this.db
+      .query()
+      .then((results: any[]) => {
+        this.results = results.map((results) => {
+          return results;
+        });
+      });
+  }
+
   query () {
     this.results = null;
     this.index = 0;
