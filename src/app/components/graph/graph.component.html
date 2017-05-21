@@ -34,8 +34,11 @@
                   <label for="dataa">A: </label>
                   <input type="date" id="dataa" name="dataa" value={{this.minDate}} min={{this.minDate}} max={{this.maxDate}} [disabled]="radio != 2" [(ngModel)]="dataa">
                 </div>
-                <input type="submit" value="Invia" class="btn btn-primary">
-                <input type="button" (click)="resetQuery()" value="Resetta grafico" class="btn btn-default">
+                <hr>
+                <div class="center">
+                  <input type="submit" value="Invia" class="btn btn-primary btn-form">
+                  <input type="button" (click)="resetQuery()" value="Resetta grafico" class="btn btn-default btn-form">
+                </div>
               </form>
           </div>
         </div>

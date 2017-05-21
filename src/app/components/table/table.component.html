@@ -50,8 +50,11 @@
                   <label for="sensore">Sensore: </label>
                   <input type="number" id="sensore" name="sensore" value="{{sensore}}" min="{{this.minSensore}}" max="{{this.maxSensore}}" [disabled]="radio != 4" [(ngModel)]="sensore" required>
                 </div>
-                <input type="submit" value="Invia" class="btn btn-primary">
-                <input type="button" (click)="resetQuery()" value="Resetta tabella" class="btn btn-default">
+                <hr>
+                <div class="center">
+                  <input type="submit" value="Invia" class="btn btn-primary btn-form">
+                  <input type="button" (click)="resetQuery()" value="Resetta grafico" class="btn btn-default btn-form">
+                </div>
               </form>
           </div>
         </div>

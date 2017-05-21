@@ -11,6 +11,10 @@ div.margin {
   margin: 0 10%;
 }
 
+.btn-form {
+  margin: 10px;
+}
+
 .center {
   text-align: center;
 }
