@@ -83,6 +83,8 @@ export class TableComponent implements OnInit, AfterViewInit {
   */
 
   resetQuery () {
+    this.results = null;
+    this.index = 0;
     this.db
       .query()
       .then((results: any[]) => {

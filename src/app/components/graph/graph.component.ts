@@ -74,6 +74,7 @@ export class GraphComponent implements OnInit {
   }
 
   resetQuery () {
+    this.graphLoaded = false;
     this.db
       .graph()
       .then((results: any[]) => {
