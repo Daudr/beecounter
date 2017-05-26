@@ -29,8 +29,7 @@ app.get("/api/query", (req, res, next) => {
 
   connection.query("SELECT DATE(ts_sens) AS `data`, DATE_FORMAT(ts_sens, '%H') AS `ora`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                 + "FROM beecounter "
-                + "GROUP BY `data`, `ora`, id_box, id_sens "
-                + "HAVING `in` <> 0 OR `out` <> 0",
+                + "GROUP BY `data`, `ora`, id_box, id_sens",
                  (error, results, fields) => {
     if (error) throw error;
     res.json(results);
@@ -51,8 +50,7 @@ app.get("/api/query/:datada/:dataa", (req, res, next) => {
   connection.query("SELECT DATE(ts_sens) AS `data`, DATE_FORMAT(ts_sens, '%H') AS `ora`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                     + "FROM beecounter "
                     + "GROUP BY `data`, `ora`, id_box, id_sens "
-                    + "HAVING `data` BETWEEN ? AND ? "
-                    + " AND (`in` <> 0 OR `out` <> 0)",
+                    + "HAVING `data` BETWEEN ? AND ?",
                     [req.params.datada, req.params.dataa],
                     (error, results, fields) => {
     if (error) throw error;
@@ -74,8 +72,7 @@ app.get("/api/query/:data", (req, res, next) => {
   connection.query("SELECT DATE(ts_sens) AS `data`, DATE_FORMAT(ts_sens, '%H') AS `ora`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                     + "FROM beecounter "
                     + "GROUP BY `data`, `ora`, id_box, id_sens "
-                    + "HAVING `data` = ? "
-                    + " AND (`in` <> 0 OR `out` <> 0)",
+                    + "HAVING `data` = ? ",
                     [req.params.data],
                     (error, results, fields) => {
     if (error) throw error;
@@ -97,8 +94,7 @@ app.get("/api/arniat/:arnia", (req, res, next) => {
   connection.query("SELECT DATE(ts_sens) AS `data`, DATE_FORMAT(ts_sens, '%H') AS `ora`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                     + "FROM beecounter "
                     + "GROUP BY `data`, `ora`, id_box, id_sens "
-                    + "HAVING id_box= ? "
-                    + " AND (`in` <> 0 OR `out` <> 0)",
+                    + "HAVING id_box= ? ",
                    [req.params.arnia],
                     (error, results, fields) => {
     if (error) throw error;
@@ -120,8 +116,7 @@ app.get("/api/sensoret/:sensore", (req, res, next) => {
   connection.query("SELECT DATE(ts_sens) AS `data`, DATE_FORMAT(ts_sens, '%H') AS `ora`, id_box, id_sens, SUM(beein) AS `in`, SUM(beeout) AS `out` "
                     + "FROM beecounter "
                     + "GROUP BY `data`, `ora`, id_box, id_sens "
-                    + "HAVING id_sens = ? "
-                    + " AND (`in` <> 0 OR `out` <> 0)",
+                    + "HAVING id_sens = ? ",
                    [req.params.sensore],
                     (error, results, fields) => {
     if (error) throw error;
